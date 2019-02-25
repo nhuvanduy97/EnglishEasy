@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#DDDDDD"
+    android:orientation="vertical">
+    <RelativeLayout
+        android:id="@+id/relativeLayout_Part5"
+        android:background="@android:color/white"
+        android:layout_width="match_parent"
+        android:layout_marginTop="8dp"
+        android:gravity="center_vertical"
+        android:layout_height="96dp">
+        <ImageView
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:id="@+id/imgPart5"
+            android:src="@drawable/five"
+            android:layout_width="70dp"
+            android:layout_height="70dp" />
+        <LinearLayout
+            android:layout_toEndOf="@id/imgPart5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:orientation="vertical">
+            <TextView
+                android:textColor="#56b48c"
+                android:textSize="25sp"
+                android:text="Part V"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:textSize="18sp"
+                android:text="Incomplete Sentences"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/relativeLayout_Part6"
+        android:background="@android:color/white"
+        android:layout_width="match_parent"
+        android:gravity="center_vertical"
+        android:layout_height="96dp"
+        android:layout_marginTop="8dp">
+        <ImageView
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:id="@+id/imgPart6"
+            android:src="@drawable/six"
+            android:layout_width="70dp"
+            android:layout_height="70dp" />
+        <LinearLayout
+            android:layout_toEndOf="@id/imgPart6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:orientation="vertical">
+            <TextView
+                android:textColor="#56b48c"
+                android:textSize="25sp"
+                android:text="Part VI"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:textSize="18sp"
+                android:text="Text Completion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/relativeLayout_Part7"
+        android:background="@android:color/white"
+        android:layout_width="match_parent"
+        android:gravity="center_vertical"
+        android:layout_height="96dp"
+        android:layout_marginTop="8dp">
+        <ImageView
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:id="@+id/imgPart7"
+            android:src="@drawable/seven"
+            android:layout_width="70dp"
+            android:layout_height="70dp" />
+        <LinearLayout
+            android:layout_toEndOf="@id/imgPart7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:orientation="vertical">
+            <TextView
+                android:textColor="#56b48c"
+                android:textSize="25sp"
+                android:text="Part VII"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:textSize="18sp"
+                android:text="Reading Comprehension"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </RelativeLayout>
+
+
+
+</LinearLayout>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/vocabolary"
+            android:icon="@drawable/ic_vocabolary"
+            android:title="@string/vocabulary"/>
+        <item
+            android:id="@+id/mini_test"
+            android:icon="@drawable/ic_test"
+            android:title="@string/mini_test"/>
+        <item android:id="@+id/listen_engish"
+            android:icon="@drawable/ic_listen_english"
+            android:title="@string/listening_english"/>
+        <item android:id="@+id/readding_engish"
+            android:icon="@drawable/ic_reading"
+            android:title="@string/reading_english"/>
+        <item android:id="@+id/dictionary"
+            android:icon="@drawable/ic_dictonary"
+            android:title="@string/dictionary"/>
+        <item android:id="@+id/voa"
+            android:icon="@drawable/ic_voa_english"
+            android:title="@string/voa_learning_english"/>
+    </group>
+    <item android:title="@string/communicate">
+        <menu>
+            <item android:id="@+id/login"
+                android:icon="@drawable/ic_account_circle"
+                android:title="@string/login"/>
+            <item android:id="@+id/share"
+                android:icon="@drawable/ic_share"
+                android:title="@string/share"/>
+            <item android:id="@+id/about_me"
+                android:icon="@drawable/ic_about_me"
+                android:title="@string/about_me"/>
+        </menu>
+    </item>
+
+</menu>

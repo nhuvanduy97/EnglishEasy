@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">EasyToeic</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="action_settings">Settings</string>
+    <string name="vocabulary">Vocabulary</string>
+    <string name="mini_test">Mini Test</string>
+    <string name="listening_english">Listening English</string>
+    <string name="reading_english">Reading English</string>
+    <string name="dictionary">Dictionary</string>
+    <string name="voa_learning_english">VOA Learning English</string>
+    <string name="communicate">Communicate</string>
+    <string name="login">Login</string>
+    <string name="share">Share</string>
+    <string name="about_me">About Me</string>
+    <string name="practice_toeic">Practice Toeic</string>
+</resources>
