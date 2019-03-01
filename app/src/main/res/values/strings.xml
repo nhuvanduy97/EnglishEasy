@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">EasyToeic</string>
+    <string name="app_name">ToeicTBD</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="action_settings">Settings</string>
@@ -14,4 +14,7 @@
     <string name="share">Share</string>
     <string name="about_me">About Me</string>
     <string name="practice_toeic">Practice Toeic</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -1,5 +1,7 @@
 package nvduy1997.com.easytoeic.fragment;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -11,11 +13,23 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import nvduy1997.com.easytoeic.R;
+import nvduy1997.com.easytoeic.activity.ScreenSlideActivity;
 
-public class ReadingFragment extends Fragment {
+public class ReadingFragment extends Fragment implements View.OnClickListener {
 
-    View view;
-    RelativeLayout relativeLayoutPart5,relativeLayoutPart6,relativeLayoutPart7;
+    private View view;
+    private OnClickOpenFragment listen;
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        try {
+            listen = (OnClickOpenFragment) context;
+        }catch (ClassCastException e){
+            throw new ClassCastException(context.toString() + " must implement OnClickOpenFragment");
+        }
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -24,26 +38,30 @@ public class ReadingFragment extends Fragment {
         return view;
     }
     private void anhxa() {
-        relativeLayoutPart5 = view.findViewById(R.id.relativeLayout_Part5);
-        relativeLayoutPart5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getContext(),"OK",Toast.LENGTH_SHORT).show();
-            }
-        });
-        relativeLayoutPart6 = view.findViewById(R.id.relativeLayout_Part6);
+        RelativeLayout relativeLayoutPart5 = view.findViewById(R.id.relativeLayout_Part5);
+        relativeLayoutPart5.setOnClickListener(this);
+        RelativeLayout relativeLayoutPart6 = view.findViewById(R.id.relativeLayout_Part6);
         relativeLayoutPart6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getContext(),"OK1",Toast.LENGTH_SHORT).show();
             }
         });
-        relativeLayoutPart7 = view.findViewById(R.id.relativeLayout_Part7);
+        RelativeLayout relativeLayoutPart7 = view.findViewById(R.id.relativeLayout_Part7);
         relativeLayoutPart7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getContext(),"OK2",Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    @Override
+    public void onClick(View v) {
+        listen.onClickOpenFragment();
+    }
+
+    public interface OnClickOpenFragment{
+        void onClickOpenFragment();
     }
 }

@@ -9,15 +9,19 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import nvduy1997.com.easytoeic.adapter.ListTestPart5Adapter;
+import nvduy1997.com.easytoeic.fragment.ListTestPart5Fragment;
 import nvduy1997.com.easytoeic.fragment.ReadingFragment;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, ReadingFragment.OnClickOpenFragment {
 
     private ReadingFragment readingFragment;
+    private ListTestPart5Fragment listTestPart5Fragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,8 +100,18 @@ public class MainActivity extends AppCompatActivity
 
         }
 
+
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    public void onClickOpenFragment() {
+        if (listTestPart5Fragment == null) {
+            listTestPart5Fragment = new ListTestPart5Fragment();
+        }
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,listTestPart5Fragment).commit();
+        Log.d("onClickOpenFragment", "onClickOpenFragment: ");
     }
 }
