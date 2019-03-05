@@ -13,15 +13,17 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import nvduy1997.com.easytoeic.adapter.ListTestPart5Adapter;
-import nvduy1997.com.easytoeic.fragment.ListTestPart5Fragment;
+import nvduy1997.com.easytoeic.fragment.ListTestFragment;
 import nvduy1997.com.easytoeic.fragment.ReadingFragment;
+import nvduy1997.com.easytoeic.fragment.QuestionTestFragment;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, ReadingFragment.OnClickOpenFragment {
+        implements NavigationView.OnNavigationItemSelectedListener, ReadingFragment.OnClickOpenFragment, ListTestFragment.OnClickOpenTestP5 {
 
     private ReadingFragment readingFragment;
-    private ListTestPart5Fragment listTestPart5Fragment;
+    private ListTestFragment listTestFragment;
+    private QuestionTestFragment questionTestFragment;
+    public static final String TAG = "ID_TEST";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -108,10 +110,22 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onClickOpenFragment() {
-        if (listTestPart5Fragment == null) {
-            listTestPart5Fragment = new ListTestPart5Fragment();
+        if (listTestFragment == null) {
+            listTestFragment = new ListTestFragment();
         }
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,listTestPart5Fragment).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, listTestFragment).commit();
         Log.d("onClickOpenFragment", "onClickOpenFragment: ");
+    }
+
+
+    @Override
+    public void onClickOpenPart5(int id) {
+        Bundle bundle = new Bundle();
+        bundle.putInt(TAG, id);
+        if (questionTestFragment == null) {
+            questionTestFragment = new QuestionTestFragment();
+        }
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, questionTestFragment).commit();
+        questionTestFragment.setArguments(bundle);
     }
 }

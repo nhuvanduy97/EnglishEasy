@@ -15,15 +15,17 @@ import java.util.ArrayList;
 import nvduy1997.com.easytoeic.R;
 import nvduy1997.com.easytoeic.model.Test;
 
-public class ListTestPart5Adapter extends RecyclerView.Adapter<ListTestPart5Adapter.viewHolder> implements View.OnClickListener {
+public class ListTestAdapter extends RecyclerView.Adapter<ListTestAdapter.viewHolder> {
     private LayoutInflater inflater;
     private ArrayList<Test> arrayTest;
-    public OnClickItemView onClickItemView;
+    private OnClickItemView onClickItemView;
 
-    public ListTestPart5Adapter(Context context, ArrayList<Test> tests) {
+
+    public ListTestAdapter(Context context, ArrayList<Test> tests) {
         this.arrayTest = tests;
         inflater = LayoutInflater.from(context);
     }
+
 
     public void setOnClickItemView(OnClickItemView onClickItemView) {
         this.onClickItemView = onClickItemView;
@@ -37,10 +39,16 @@ public class ListTestPart5Adapter extends RecyclerView.Adapter<ListTestPart5Adap
     }
 
     @Override
-    public void onBindViewHolder(@NonNull viewHolder viewHolder, int i) {
-        Test test = arrayTest.get(i);
+    public void onBindViewHolder(@NonNull viewHolder viewHolder, final int i) {
+        final Test test = arrayTest.get(i);
         viewHolder.textViewTest.setText(test.getTen());
-        viewHolder.itemView.setOnClickListener(this);
+        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onClickItemView.onClickItemView(test);
+
+            }
+        });
 
     }
 
@@ -49,10 +57,6 @@ public class ListTestPart5Adapter extends RecyclerView.Adapter<ListTestPart5Adap
         return arrayTest.size();
     }
 
-    @Override
-    public void onClick(View v) {
-        onClickItemView.onClickItemView();
-    }
 
     class viewHolder extends RecyclerView.ViewHolder {
         TextView textViewTest;
@@ -67,7 +71,7 @@ public class ListTestPart5Adapter extends RecyclerView.Adapter<ListTestPart5Adap
     }
 
     public interface OnClickItemView {
-        void onClickItemView();
+        void onClickItemView(Test test);
     }
 
 }
