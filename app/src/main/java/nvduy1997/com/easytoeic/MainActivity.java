@@ -16,6 +16,7 @@ import android.view.MenuItem;
 import nvduy1997.com.easytoeic.adapter.ListTestPart5Adapter;
 import nvduy1997.com.easytoeic.fragment.ListTestPart5Fragment;
 import nvduy1997.com.easytoeic.fragment.ReadingFragment;
+import nvduy1997.com.easytoeic.fragment.VOAFragment;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, ReadingFragment.OnClickOpenFragment {
@@ -91,6 +92,11 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.dictionary) {
 
         } else if (id == R.id.voa) {
+            VOAFragment voaFragment = new VOAFragment();
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.fragment_container, voaFragment);
+            transaction.addToBackStack(null);
+            transaction.commit();
 
         } else if (id == R.id.login) {
 
@@ -111,7 +117,7 @@ public class MainActivity extends AppCompatActivity
         if (listTestPart5Fragment == null) {
             listTestPart5Fragment = new ListTestPart5Fragment();
         }
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,listTestPart5Fragment).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, listTestPart5Fragment).commit();
         Log.d("onClickOpenFragment", "onClickOpenFragment: ");
     }
 }
