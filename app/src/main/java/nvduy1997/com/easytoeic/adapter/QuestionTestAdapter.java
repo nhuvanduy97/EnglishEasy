@@ -16,12 +16,12 @@ import nvduy1997.com.easytoeic.R;
 import nvduy1997.com.easytoeic.model.Question;
 
 
-public class ScreenSileAdapter extends RecyclerView.Adapter<ScreenSileAdapter.viewHolder> {
+public class QuestionTestAdapter extends RecyclerView.Adapter<QuestionTestAdapter.viewHolder> {
 
     private ArrayList<Question> listQuestion;
     Context context;
 
-    public ScreenSileAdapter(Context context, ArrayList<Question> listQuestion){
+    public QuestionTestAdapter(Context context, ArrayList<Question> listQuestion){
         this.context = context;
         this.listQuestion = listQuestion;
     }
@@ -47,7 +47,7 @@ public class ScreenSileAdapter extends RecyclerView.Adapter<ScreenSileAdapter.vi
 
     @Override
     public int getItemCount() {
-        return 4;
+        return listQuestion.size();
     }
 
     class viewHolder extends RecyclerView.ViewHolder {

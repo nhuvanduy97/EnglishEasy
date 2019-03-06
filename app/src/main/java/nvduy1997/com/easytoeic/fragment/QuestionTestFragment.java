@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import nvduy1997.com.easytoeic.R;
-import nvduy1997.com.easytoeic.adapter.ScreenSileAdapter;
+import nvduy1997.com.easytoeic.adapter.QuestionTestAdapter;
 import nvduy1997.com.easytoeic.model.Question;
 import nvduy1997.com.easytoeic.server.APIService;
 import nvduy1997.com.easytoeic.server.DataService;
@@ -28,30 +28,47 @@ import retrofit2.Response;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ScreenSlideFragment extends Fragment {
+public class QuestionTestFragment extends Fragment {
 
-    ScreenSileAdapter adapter;
-    RecyclerView recyclerViewQuestion;
-    View view;
+    public static final String TAG = "ID_TEST";
+    private QuestionTestAdapter adapter;
+    private RecyclerView recyclerViewQuestion;
+    private View view;
+    private int ID;
+
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        Bundle bundle = getArguments();
+        if (bundle != null) {
+            ID = bundle.getInt(TAG);
+        }
+
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_screen_slide, container, false);
         recyclerViewQuestion = view.findViewById(R.id.RecyclerViewQuestion);
-        getAllQuestionPart5();
+        if (ID == 1) {
+            getAllQuestionPart5Test1();
+        }
+
         return view;
 
     }
 
-    public void getAllQuestionPart5() {
+    public void getAllQuestionPart5Test1() {
         DataService dataService = APIService.getService();
-        Call<List<Question>> callBack = dataService.getQuestion();
+        Call<List<Question>> callBack = dataService.getQuestionP5Test1();
         callBack.enqueue(new Callback<List<Question>>() {
             @Override
             public void onResponse(Call<List<Question>> call, Response<List<Question>> response) {
                 recyclerViewQuestion = view.findViewById(R.id.RecyclerViewQuestion);
                 ArrayList<Question> listQuestion = (ArrayList<Question>) response.body();
-                adapter = new ScreenSileAdapter(getActivity(),listQuestion);
+                adapter = new QuestionTestAdapter(getActivity(), listQuestion);
                 LinearLayoutManager linearLayout = new LinearLayoutManager(getActivity());
                 linearLayout.setOrientation(LinearLayout.VERTICAL);
                 recyclerViewQuestion.setLayoutManager(linearLayout);
@@ -65,6 +82,11 @@ public class ScreenSlideFragment extends Fragment {
             }
         });
 
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
     }
 
 

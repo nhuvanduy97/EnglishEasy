@@ -1,7 +1,6 @@
 package nvduy1997.com.easytoeic.fragment;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -13,7 +12,6 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import nvduy1997.com.easytoeic.R;
-import nvduy1997.com.easytoeic.activity.ScreenSlideActivity;
 
 public class ReadingFragment extends Fragment implements View.OnClickListener {
 
