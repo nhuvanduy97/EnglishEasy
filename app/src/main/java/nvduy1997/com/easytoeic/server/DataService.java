@@ -2,6 +2,8 @@ package nvduy1997.com.easytoeic.server;
 
 import java.util.List;
 
+import nvduy1997.com.easytoeic.model.DetailGrammar;
+import nvduy1997.com.easytoeic.model.Grammar;
 import nvduy1997.com.easytoeic.model.Question;
 import nvduy1997.com.easytoeic.model.TopicVocabulary;
 import nvduy1997.com.easytoeic.model.Vocabulary;
@@ -21,4 +23,12 @@ public interface DataService {
     @FormUrlEncoded
     @POST("TuVung.php")
     Call<List<Vocabulary>> getVocabulary(@Field("idChuDe") String idChuDe);
+
+    @GET("allGrammar.php")
+    Call<List<Grammar>> getAllGrammar();
+
+    @FormUrlEncoded
+    @POST("detailGrammar.php")
+    Call<List<DetailGrammar>> getDetailgrammar(@Field("idgrammar") String idgrammar);
+
 }

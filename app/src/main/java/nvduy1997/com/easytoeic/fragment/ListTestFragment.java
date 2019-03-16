@@ -1,6 +1,6 @@
 package nvduy1997.com.easytoeic.fragment;
 
-import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -16,6 +16,7 @@ import java.util.ArrayList;
 
 import nvduy1997.com.easytoeic.R;
 
+import nvduy1997.com.easytoeic.activity.QuestionActivity;
 import nvduy1997.com.easytoeic.adapter.ListTestAdapter;
 import nvduy1997.com.easytoeic.model.Test;
 
@@ -25,26 +26,10 @@ public class ListTestFragment extends Fragment implements ListTestAdapter.OnClic
     private ListTestAdapter adapter;
     private RecyclerView recyclerView;
     private ArrayList<Test> arrayTest;
-    private OnClickOpenTestP5 onClickOpenTestP5;
 
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof OnClickOpenTestP5) {
-            try {
-                onClickOpenTestP5 = (OnClickOpenTestP5) context;
-            } catch (Exception e) {
 
-            }
-        }
 
-    }
 
-    @Override
-    public void onDetach() {
-        onClickOpenTestP5 = null;
-        super.onDetach();
-    }
 
     @Nullable
     @Override
@@ -77,13 +62,14 @@ public class ListTestFragment extends Fragment implements ListTestAdapter.OnClic
     public void onClickItemView(Test test) {
         if (test.getId() == 1) {
             adapter = new ListTestAdapter(getContext(), arrayTest);
-            onClickOpenTestP5.onClickOpenPart5(test.getId());
+            Intent intent = new Intent(getActivity(), QuestionActivity.class);
+            Bundle bundle = new Bundle();
+            bundle.putInt("KEY",test.getId());
+            intent.putExtras(bundle);
+            startActivity(intent);
         }
     }
 
-    public interface OnClickOpenTestP5 {
-        void onClickOpenPart5(int id);
-    }
 
 
 }

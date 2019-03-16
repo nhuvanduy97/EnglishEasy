@@ -11,31 +11,40 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import nvduy1997.com.easytoeic.R;
+import nvduy1997.com.easytoeic.fragment.DetailGrammarFragment;
+import nvduy1997.com.easytoeic.fragment.GrammarFragment;
+import nvduy1997.com.easytoeic.fragment.HomeFragment;
 import nvduy1997.com.easytoeic.fragment.ListTestFragment;
 import nvduy1997.com.easytoeic.fragment.ListeningFragment;
 import nvduy1997.com.easytoeic.fragment.ReadingFragment;
 import nvduy1997.com.easytoeic.fragment.QuestionTestFragment;
 import nvduy1997.com.easytoeic.fragment.TopicVocabularyFragment;
+
 import nvduy1997.com.easytoeic.fragment.VOAFragment;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, ReadingFragment.OnClickOpenFragment, ListTestFragment.OnClickOpenTestP5 {
+        implements NavigationView.OnNavigationItemSelectedListener
+        , ReadingFragment.OnClickOpenFragment
+        , GrammarFragment.OpenFragmentDetail
+        , HomeFragment.OpenRead
+        , HomeFragment.OpenDic
+        , HomeFragment.OpenVOA
+        , HomeFragment.OpenGrammar {
 
     private ReadingFragment readingFragment;
     private ListTestFragment listTestFragment;
-    private QuestionTestFragment questionTestFragment;
-    public static final String TAG = "ID_TEST";
+    private Toolbar toolbar;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
 
@@ -47,6 +56,11 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        HomeFragment homeFragment = new HomeFragment();
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_container,homeFragment);
+        transaction.commit();
     }
 
     @Override
@@ -106,6 +120,13 @@ public class MainActivity extends AppCompatActivity
             transaction.addToBackStack(null);
             transaction.commit();
 
+        } else if (id == R.id.grammar_english) {
+            GrammarFragment grammarFragment = new GrammarFragment();
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.fragment_container, grammarFragment);
+            transaction.addToBackStack(null);
+            transaction.commit();
+
         } else if (id == R.id.dictionary) {
 
         } else if (id == R.id.voa) {
@@ -134,20 +155,52 @@ public class MainActivity extends AppCompatActivity
         if (listTestFragment == null) {
             listTestFragment = new ListTestFragment();
         }
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, listTestFragment).commit();
-        Log.d("onClickOpenFragment", "onClickOpenFragment: ");
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, listTestFragment).addToBackStack(null).commit();
+
     }
 
+    @Override
+    public void Open(int id) {
+        DetailGrammarFragment detailGrammarFragment = new DetailGrammarFragment();
+        Bundle bundle = new Bundle();
+        bundle.putInt("KEY", id);
+        detailGrammarFragment.setArguments(bundle);
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_container, detailGrammarFragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
+    }
 
     @Override
-    public void onClickOpenPart5(int id) {
-        Bundle bundle = new Bundle();
-        bundle.putInt(TAG, id);
-        if (questionTestFragment == null) {
-            questionTestFragment = new QuestionTestFragment();
-        }
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, questionTestFragment).commit();
-        questionTestFragment.setArguments(bundle);
+    public void openRead() {
+        readingFragment = new ReadingFragment();
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_container, readingFragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
+    }
+
+    @Override
+    public void openDic() {
+
+    }
+
+    @Override
+    public void openVOA() {
+        VOAFragment voaFragment = new VOAFragment();
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_container, voaFragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
+    }
+
+    @Override
+    public void openGrammar() {
+        GrammarFragment grammarFragment = new GrammarFragment();
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_container, grammarFragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
     }
 
 }

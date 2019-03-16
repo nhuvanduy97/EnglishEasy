@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:id="@+id/linear_readding"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:src="@drawable/read"
+                android:layout_width="100dp"
+                android:layout_height="90dp" />
+            <TextView
+                android:textColor="#56b48c"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:text="Read English"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/linear_dictionary"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:src="@drawable/dictionaryenglish"
+                android:layout_width="100dp"
+                android:layout_height="90dp" />
+            <TextView
+                android:textColor="#56b48c"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:text="Dictionary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/linear_listen_english"
+        android:layout_marginTop="16dp"
+        android:weightSum="2"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:src="@drawable/listenenglish"
+                android:layout_width="100dp"
+                android:layout_height="90dp" />
+            <TextView
+                android:textColor="#56b48c"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:text="Listen English"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/linear_voa_english"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:src="@drawable/voaenglish"
+                android:layout_width="100dp"
+                android:layout_height="90dp" />
+            <TextView
+                android:textColor="#56b48c"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:text="VOA English"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linear_grammar_english"
+        android:layout_marginTop="16dp"
+        android:weightSum="2"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:src="@drawable/grammarenglish"
+                android:layout_width="100dp"
+                android:layout_height="90dp" />
+            <TextView
+                android:textColor="#56b48c"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:text="Grammar English"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/linear_vocabulary_english"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:src="@drawable/vocabularyenglish"
+                android:layout_width="100dp"
+                android:layout_height="90dp" />
+            <TextView
+                android:textColor="#56b48c"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:text="Vocabulary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>

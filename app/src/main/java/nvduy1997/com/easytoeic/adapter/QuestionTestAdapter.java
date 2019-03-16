@@ -1,6 +1,10 @@
 package nvduy1997.com.easytoeic.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+
+import android.content.SharedPreferences;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -9,17 +13,19 @@ import android.view.ViewGroup;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
-
 import java.util.ArrayList;
-
 import nvduy1997.com.easytoeic.R;
+import nvduy1997.com.easytoeic.activity.MainActivity;
+import nvduy1997.com.easytoeic.activity.QuestionActivity;
 import nvduy1997.com.easytoeic.model.Question;
 
 
-public class QuestionTestAdapter extends RecyclerView.Adapter<QuestionTestAdapter.viewHolder> {
+public class QuestionTestAdapter extends RecyclerView.Adapter<QuestionTestAdapter.viewHolder>  {
 
     private ArrayList<Question> listQuestion;
-    Context context;
+    private Context context;
+    private QuestionActivity questionActivity = new QuestionActivity();
+
 
     public QuestionTestAdapter(Context context, ArrayList<Question> listQuestion){
         this.context = context;
@@ -34,24 +40,28 @@ public class QuestionTestAdapter extends RecyclerView.Adapter<QuestionTestAdapte
         return new viewHolder(view);
     }
 
+    @SuppressLint("ResourceAsColor")
     @Override
-    public void onBindViewHolder(@NonNull viewHolder viewHolder, int i) {
-        Question question = listQuestion.get(i);
+    public void onBindViewHolder(@NonNull final viewHolder viewHolder, int i) {
+        final Question question = listQuestion.get(i);
         viewHolder.tvQuestion.setText(question.getTen());
         viewHolder.numberQuestion.setText(question.getId());
         viewHolder.radA.setText(question.getA());
         viewHolder.radB.setText(question.getB());
         viewHolder.radC.setText(question.getC());
         viewHolder.radD.setText(question.getD());
-    }
 
+        int checked = viewHolder.radioGroup.getCheckedRadioButtonId();
+
+
+
+    }
     @Override
     public int getItemCount() {
         return listQuestion.size();
     }
 
     class viewHolder extends RecyclerView.ViewHolder {
-
         TextView tvQuestion,numberQuestion;
         RadioGroup radioGroup;
         RadioButton radA;
@@ -69,4 +79,23 @@ public class QuestionTestAdapter extends RecyclerView.Adapter<QuestionTestAdapte
             radD = itemView.findViewById(R.id.radD);
         }
     }
+
+    private void Check(viewHolder viewHolder, Question question,RadioGroup radioGroup, int checkedRadioButtonId){
+        checkedRadioButtonId = radioGroup.getCheckedRadioButtonId();
+        if (checkedRadioButtonId == R.id.radA && viewHolder.radA.equals(question.getCheck())){
+            questionActivity.Save(question.getId());
+        }else if (checkedRadioButtonId == R.id.radB && viewHolder.radB.equals(question.getCheck())){
+            questionActivity.Save(question.getId());
+        } else if (checkedRadioButtonId == R.id.radC && viewHolder.radC.equals(question.getCheck())){
+            questionActivity.Save(question.getId());
+        } else if (checkedRadioButtonId == R.id.radD && viewHolder.radD.equals(question.getCheck())){
+            questionActivity.Save(question.getId());
+        }
+    }
+
+
+
+
+
+
 }
