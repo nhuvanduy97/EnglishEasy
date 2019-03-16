@@ -27,10 +27,6 @@ public class ListTestFragment extends Fragment implements ListTestAdapter.OnClic
     private RecyclerView recyclerView;
     private ArrayList<Test> arrayTest;
 
-
-
-
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

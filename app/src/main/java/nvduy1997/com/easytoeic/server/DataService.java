@@ -1,3 +1,4 @@
+
 package nvduy1997.com.easytoeic.server;
 
 import java.util.List;
@@ -30,5 +31,6 @@ public interface DataService {
     @FormUrlEncoded
     @POST("detailGrammar.php")
     Call<List<DetailGrammar>> getDetailgrammar(@Field("idgrammar") String idgrammar);
+
 
 }

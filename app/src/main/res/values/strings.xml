@@ -1,3 +1,4 @@
+
 <resources>
     <string name="app_name">ToeicTBD</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
@@ -20,3 +21,4 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="grammar_english">Grammar English</string>
 </resources>
+
