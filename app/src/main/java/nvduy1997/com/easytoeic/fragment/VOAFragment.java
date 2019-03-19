@@ -5,11 +5,14 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -42,7 +45,7 @@ public class VOAFragment extends Fragment {
     private ListView listView;
     private ArrayList<VideoYoutube> videoYoutubes;
     private VideoYoutubeAdapter adapter;
-
+    private EditText edtSearchVideo;
 
     @Nullable
     @Override
@@ -50,9 +53,9 @@ public class VOAFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_voa, container, false);
         listView = view.findViewById(R.id.lvVideo);
         videoYoutubes = new ArrayList<>();
+        GetJsonYoutube(getJson);
         adapter = new VideoYoutubeAdapter(getContext(), R.layout.list_video_youtube, videoYoutubes);
         listView.setAdapter(adapter);
-        GetJsonYoutube(getJson);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -62,6 +65,24 @@ public class VOAFragment extends Fragment {
                 intent.putExtra("idVideoYoutube", videoYoutubes.get(position).getIdVideo());
                 startActivity(intent);
 
+            }
+        });
+
+        edtSearchVideo = view.findViewById(R.id.edtSearchVideo);
+        edtSearchVideo.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                filter(s.toString());
             }
         });
         return view;
@@ -112,4 +133,13 @@ public class VOAFragment extends Fragment {
 
     }
 
+    private void filter(String text) {
+        ArrayList<VideoYoutube> filteredList = new ArrayList<>();
+        for (VideoYoutube item : videoYoutubes) {
+            if (item.getTitle().toLowerCase().contains(text.toLowerCase())) {
+                filteredList.add(item);
+            }
+        }
+        adapter.filterList(filteredList);
+    }
 }

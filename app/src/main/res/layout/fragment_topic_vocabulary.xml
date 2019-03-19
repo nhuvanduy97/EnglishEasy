@@ -1,31 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/fgVoa"
+    android:id="@+id/fragment_topic_vocabulary"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
     <EditText
         android:layout_marginLeft="8dp"
-        android:hint="   search video"
+        android:hint="   search topic"
         android:background="@drawable/custom_search"
-        android:id="@+id/edtSearchVideo"
+        android:id="@+id/edtSearchTopic"
         android:layout_width="365dp"
         android:layout_height="42dp" />
 
     <ImageButton
-        android:id="@+id/btnVoiceYoutube"
+        android:id="@+id/btnVoiceTopic"
         android:layout_width="32dp"
         android:layout_height="32dp"
-        android:layout_marginTop="6dp"
-        android:layout_toRightOf="@+id/edtSearchVideo"
+        android:layout_marginTop="8dp"
+        android:layout_toRightOf="@+id/edtSearchTopic"
         android:background="@drawable/ic_speaking" />
 
     <ListView
         android:background="@drawable/custom_background"
-        android:id="@+id/lvVideo"
+        android:id="@+id/lvTopicVocabulary"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/edtSearchVideo">
+        android:layout_below="@+id/edtSearchTopic">
 
     </ListView>
+
 </RelativeLayout>
+
+

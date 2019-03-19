@@ -14,23 +14,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 import nvduy1997.com.easytoeic.R;
-import nvduy1997.com.easytoeic.model.VideoYoutube;
+import nvduy1997.com.easytoeic.model.TopicVocabulary;
+import nvduy1997.com.easytoeic.model.Vocabulary;
 
-public class VideoYoutubeAdapter extends BaseAdapter {
-
+public class TopicVocabularyAdapter extends BaseAdapter {
     private Context context;
     private int layout;
-    private List<VideoYoutube> videoYoutubeList;
+    private List<TopicVocabulary> topicVocabularyList;
 
-    public VideoYoutubeAdapter(Context context, int layout, List<VideoYoutube> videoYoutubeList) {
+    public TopicVocabularyAdapter(Context context, int layout, List<TopicVocabulary> topicVocabularyList) {
         this.context = context;
         this.layout = layout;
-        this.videoYoutubeList = videoYoutubeList;
+        this.topicVocabularyList = topicVocabularyList;
     }
 
     @Override
     public int getCount() {
-        return videoYoutubeList.size();
+        return topicVocabularyList.size();
     }
 
     @Override
@@ -44,9 +44,8 @@ public class VideoYoutubeAdapter extends BaseAdapter {
     }
 
     private class ViewHolder {
-        ImageView imgThumbnail;
-        TextView txtTitleVideo;
-
+        TextView txtTopic;
+        ImageView imgTopic, imgDowloadTopic;
     }
 
     @Override
@@ -56,22 +55,24 @@ public class VideoYoutubeAdapter extends BaseAdapter {
             viewHolder = new ViewHolder();
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(layout, null);
-            viewHolder.imgThumbnail = convertView.findViewById(R.id.imgThumbnail);
-            viewHolder.txtTitleVideo = convertView.findViewById(R.id.txtTitleVideo);
+            viewHolder.imgTopic = convertView.findViewById(R.id.imgTopic);
+            viewHolder.txtTopic = convertView.findViewById(R.id.txtTopic);
+            viewHolder.imgDowloadTopic = convertView.findViewById(R.id.imgDowloadTopic);
             convertView.setTag(viewHolder);
+
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
-
-        VideoYoutube videoYoutube = videoYoutubeList.get(position);
-        viewHolder.txtTitleVideo.setText(videoYoutube.getTitle());
-        Picasso.with(context).load(videoYoutube.getThumbnail()).into(viewHolder.imgThumbnail);
+        TopicVocabulary topicVocabulary = topicVocabularyList.get(position);
+        viewHolder.txtTopic.setText(topicVocabulary.getTenchude());
+        Picasso.with(context).load(topicVocabulary.getHinhchude()).into(viewHolder.imgTopic);
+        viewHolder.imgDowloadTopic.setImageResource(R.drawable.down);
 
         return convertView;
     }
 
-    public void filterList(ArrayList<VideoYoutube> filteredList) {
-        videoYoutubeList = filteredList;
+    public void filterList(ArrayList<TopicVocabulary> filteredList) {
+        topicVocabularyList = filteredList;
         notifyDataSetChanged();
     }
 }
