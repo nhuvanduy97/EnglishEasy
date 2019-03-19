@@ -96,7 +96,7 @@ public class VocabularyFragment extends Fragment {
                 vocabularyAdapter.setOnNoteListener(new VocabularyAdapter.OnNoteListener() {
                     @Override
                     public void onNoteClick(int position) {
-                        Toast.makeText(getContext(), vocabularyArrayList.get(position).getTuenglish(), Toast.LENGTH_SHORT).show();
+
                         voice = vocabularyArrayList.get(position).getTuenglish();
                         textToSpeech.speak(voice, TextToSpeech.QUEUE_FLUSH, null, null);
                     }
