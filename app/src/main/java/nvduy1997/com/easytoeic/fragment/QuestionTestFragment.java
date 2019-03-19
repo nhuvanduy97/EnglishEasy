@@ -1,21 +1,19 @@
 package nvduy1997.com.easytoeic.fragment;
 
 
+
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import nvduy1997.com.easytoeic.R;
 import nvduy1997.com.easytoeic.adapter.QuestionTestAdapter;
 import nvduy1997.com.easytoeic.model.Question;
@@ -30,8 +28,8 @@ import retrofit2.Response;
  */
 public class QuestionTestFragment extends Fragment {
 
-    public static final String TAG = "ID_TEST";
-    private QuestionTestAdapter adapter;
+
+    public QuestionTestAdapter adapter;
     private RecyclerView recyclerViewQuestion;
     private View view;
     private int ID;
@@ -40,11 +38,7 @@ public class QuestionTestFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Bundle bundle = getArguments();
-        if (bundle != null) {
-            ID = bundle.getInt(TAG);
-        }
-
+        ID = getArguments().getInt("KEY");
     }
 
     @Override
@@ -52,10 +46,9 @@ public class QuestionTestFragment extends Fragment {
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_screen_slide, container, false);
         recyclerViewQuestion = view.findViewById(R.id.RecyclerViewQuestion);
-        if (ID == 1) {
+        if (ID == 1){
             getAllQuestionPart5Test1();
         }
-
         return view;
 
     }
@@ -88,6 +81,7 @@ public class QuestionTestFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
     }
+
 
 
 }

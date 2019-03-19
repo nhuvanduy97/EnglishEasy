@@ -18,6 +18,9 @@
         <item android:id="@+id/readding_engish"
             android:icon="@drawable/ic_reading"
             android:title="@string/reading_english"/>
+        <item android:id="@+id/grammar_english"
+            android:icon="@drawable/ic_grammer"
+            android:title="@string/grammar_english"/>
         <item android:id="@+id/dictionary"
             android:icon="@drawable/ic_dictonary"
             android:title="@string/dictionary"/>
