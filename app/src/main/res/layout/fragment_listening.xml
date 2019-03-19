@@ -1,110 +1,147 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:layout_marginTop="64dp"
-    android:layout_marginLeft="16dp"
-    android:layout_marginRight="16dp"
-    >
-    <LinearLayout
+    android:background="#DDDDDD"
+    android:orientation="vertical">
+    <RelativeLayout
+        android:id="@+id/relativeLayout_Part1"
+        android:background="@android:color/white"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        >
+        android:layout_marginTop="8dp"
+        android:gravity="center_vertical"
+        android:layout_height="96dp">
+        <ImageView
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:id="@+id/imgPart1"
+            android:src="@drawable/one"
+            android:layout_width="70dp"
+            android:layout_height="70dp" />
         <LinearLayout
-            android:gravity="center"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            >
-            <ImageView
-                android:src="@drawable/part11"
-                android:id="@+id/imgPart1"
-                android:layout_width="100dp"
-                android:layout_height="100dp" />
+            android:layout_toEndOf="@id/imgPart1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:orientation="vertical">
             <TextView
-                android:text="Part 1 : Listening and Photo"
-                android:textColor="#1190FF"
-                android:textStyle="bold"
-                android:textSize="20sp"
-                android:layout_marginTop="10dp"
+                android:textColor="#56b48c"
+                android:textSize="25sp"
+                android:text="Part I"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
-
-        </LinearLayout>
-        <LinearLayout
-            android:orientation="vertical"
-            android:gravity="center"
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="match_parent">
-            <ImageView
-                android:src="@drawable/part2"
-                android:id="@+id/imgPart2"
-                android:layout_width="100dp"
-                android:layout_height="100dp" />
             <TextView
-                android:text="Part 2 : Question and Respone"
-                android:textColor="#1190FF"
-                android:textStyle="bold"
-                android:textSize="20sp"
-                android:layout_marginTop="12dp"
+                android:textSize="18sp"
+                android:text="Photo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
-
         </LinearLayout>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_marginTop="16dp"
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/relativeLayout_Part2"
+        android:background="@android:color/white"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        >
+        android:gravity="center_vertical"
+        android:layout_height="96dp"
+        android:layout_marginTop="8dp">
+        <ImageView
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:id="@+id/imgPart2"
+            android:src="@drawable/two"
+            android:layout_width="70dp"
+            android:layout_height="70dp" />
         <LinearLayout
-            android:gravity="center"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            >
-            <ImageView
-                android:src="@drawable/part3"
-                android:id="@+id/imgPart3"
-                android:layout_width="100dp"
-                android:layout_height="100dp" />
+            android:layout_toEndOf="@id/imgPart2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:orientation="vertical">
             <TextView
-                android:text="Part 3 : Short Conversation"
-                android:textColor="#1190FF"
-                android:textStyle="bold"
-                android:textSize="20sp"
-                android:layout_marginTop="10dp"
+                android:textColor="#56b48c"
+                android:textSize="25sp"
+                android:text="Part II"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
-
-        </LinearLayout>
-        <LinearLayout
-            android:orientation="vertical"
-            android:gravity="center"
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="match_parent">
-            <ImageView
-                android:src="@drawable/part4"
-                android:id="@+id/imgPart4"
-                android:layout_width="100dp"
-                android:layout_height="100dp" />
             <TextView
-                android:text="Part 4 : Question and Respone"
-                android:textColor="#1190FF"
-                android:textStyle="bold"
-                android:textSize="20sp"
-                android:layout_marginTop="10dp"
+                android:textSize="18sp"
+                android:text="Question and Repone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
-
         </LinearLayout>
-    </LinearLayout>
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/relativeLayout_Par3"
+        android:background="@android:color/white"
+        android:layout_width="match_parent"
+        android:gravity="center_vertical"
+        android:layout_height="96dp"
+        android:layout_marginTop="8dp">
+        <ImageView
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:id="@+id/imgPart3"
+            android:src="@drawable/three"
+            android:layout_width="70dp"
+            android:layout_height="70dp" />
+        <LinearLayout
+            android:layout_toEndOf="@id/imgPart3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:orientation="vertical">
+            <TextView
+                android:textColor="#56b48c"
+                android:textSize="25sp"
+                android:text="Part III"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:textSize="18sp"
+                android:text="Short Covenstation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout_Part4"
+        android:background="@android:color/white"
+        android:layout_width="match_parent"
+        android:gravity="center_vertical"
+        android:layout_height="96dp"
+        android:layout_marginTop="8dp">
+        <ImageView
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:id="@+id/imgPart4"
+            android:src="@drawable/four"
+            android:layout_width="70dp"
+            android:layout_height="70dp" />
+        <LinearLayout
+            android:layout_toEndOf="@id/imgPart4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:orientation="vertical">
+            <TextView
+                android:textColor="#56b48c"
+                android:textSize="25sp"
+                android:text="Part IV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:textSize="18sp"
+                android:text="Short Talk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </RelativeLayout>
 
 </LinearLayout>

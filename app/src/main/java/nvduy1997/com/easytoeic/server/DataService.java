@@ -32,5 +32,4 @@ public interface DataService {
     @POST("detailGrammar.php")
     Call<List<DetailGrammar>> getDetailgrammar(@Field("idgrammar") String idgrammar);
 
-
 }

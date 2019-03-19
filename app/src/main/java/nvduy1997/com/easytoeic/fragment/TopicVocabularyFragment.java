@@ -90,7 +90,6 @@ public class TopicVocabularyFragment extends Fragment {
                 listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        Toast.makeText(getContext(), topicVocabularyArrayList.get(position).getIdchude(), Toast.LENGTH_SHORT).show();
 
                         VocabularyFragment vocabularyFragment = new VocabularyFragment();
 
