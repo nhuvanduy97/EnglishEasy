@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+   <EditText
+       android:layout_marginLeft="8dp"
+       android:hint="   search vocabulary"
+       android:background="@drawable/custom_search"
+       android:id="@+id/edtSearchVocabulary"
+       android:layout_width="320dp"
+       android:layout_height="42dp" />
+
+    <ImageButton
+        android:id="@+id/btnVoiceVocabulary"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="6dp"
+        android:layout_toRightOf="@+id/edtSearchVocabulary"
+        android:background="@drawable/ic_speaking" />
+
+    <Switch
+        android:id="@+id/btnSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:layout_toRightOf="@+id/btnVoiceVocabulary"
+        android:theme="@style/SCBSwitch" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/edtSearchVocabulary"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/lvVocabulary"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/custom_background"
+            >
+
+        </android.support.v7.widget.RecyclerView>
+    </LinearLayout>
+
+</RelativeLayout>

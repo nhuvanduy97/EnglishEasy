@@ -4,6 +4,7 @@ package nvduy1997.com.easytoeic.activity;
 import android.os.Bundle;
 
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -16,8 +17,10 @@ import android.view.MenuItem;
 
 import nvduy1997.com.easytoeic.R;
 import nvduy1997.com.easytoeic.fragment.ListTestFragment;
+import nvduy1997.com.easytoeic.fragment.ListeningFragment;
 import nvduy1997.com.easytoeic.fragment.ReadingFragment;
 import nvduy1997.com.easytoeic.fragment.QuestionTestFragment;
+import nvduy1997.com.easytoeic.fragment.TopicVocabularyFragment;
 import nvduy1997.com.easytoeic.fragment.VOAFragment;
 
 public class MainActivity extends AppCompatActivity
@@ -81,10 +84,20 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.vocabolary) {
+            TopicVocabularyFragment topicVocabularyFragment = new TopicVocabularyFragment();
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.fragment_container, topicVocabularyFragment);
+            transaction.addToBackStack(null);
+            transaction.commit();
 
         } else if (id == R.id.mini_test) {
 
         } else if (id == R.id.listen_engish) {
+            ListeningFragment listeningFragment = new ListeningFragment();
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.fragment_container, listeningFragment);
+            transaction.addToBackStack(null);
+            transaction.commit();
 
         } else if (id == R.id.readding_engish) {
             readingFragment = new ReadingFragment();
@@ -96,7 +109,7 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.dictionary) {
 
         } else if (id == R.id.voa) {
-            VOAFragment voaFragment= new VOAFragment();
+            VOAFragment voaFragment = new VOAFragment();
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
             transaction.replace(R.id.fragment_container, voaFragment);
             transaction.addToBackStack(null);
@@ -136,5 +149,5 @@ public class MainActivity extends AppCompatActivity
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, questionTestFragment).commit();
         questionTestFragment.setArguments(bundle);
     }
-    
+
 }
