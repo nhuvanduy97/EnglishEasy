@@ -10,12 +10,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import java.util.ArrayList;
-
-
 import nvduy1997.com.easytoeic.R;
-
 import nvduy1997.com.easytoeic.activity.QuestionActivity;
 import nvduy1997.com.easytoeic.adapter.ListTestAdapter;
 import nvduy1997.com.easytoeic.model.Test;
@@ -65,7 +61,4 @@ public class ListTestFragment extends Fragment implements ListTestAdapter.OnClic
             startActivity(intent);
         }
     }
-
-
-
 }
