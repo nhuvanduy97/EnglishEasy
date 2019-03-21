@@ -4,11 +4,11 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#DDDDDD"
+    android:background="@drawable/custom_background"
     android:orientation="vertical">
     <RelativeLayout
         android:id="@+id/relativeLayout_Part1"
-        android:background="@android:color/white"
+        android:background="@drawable/custom_editext"
         android:layout_width="match_parent"
         android:layout_marginTop="8dp"
         android:gravity="center_vertical"
@@ -42,7 +42,7 @@
     </RelativeLayout>
     <RelativeLayout
         android:id="@+id/relativeLayout_Part2"
-        android:background="@android:color/white"
+        android:background="@drawable/custom_editext"
         android:layout_width="match_parent"
         android:gravity="center_vertical"
         android:layout_height="96dp"
@@ -75,8 +75,8 @@
         </LinearLayout>
     </RelativeLayout>
     <RelativeLayout
-        android:id="@+id/relativeLayout_Par3"
-        android:background="@android:color/white"
+        android:id="@+id/relativeLayout_Part3"
+        android:background="@drawable/custom_editext"
         android:layout_width="match_parent"
         android:gravity="center_vertical"
         android:layout_height="96dp"
@@ -111,7 +111,7 @@
 
     <RelativeLayout
         android:id="@+id/relativeLayout_Part4"
-        android:background="@android:color/white"
+        android:background="@drawable/custom_editext"
         android:layout_width="match_parent"
         android:gravity="center_vertical"
         android:layout_height="96dp"

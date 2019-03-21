@@ -3,11 +3,11 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#DDDDDD"
+    android:background="@drawable/custom_background"
     android:orientation="vertical">
     <RelativeLayout
         android:id="@+id/relativeLayout_Part5"
-        android:background="@android:color/white"
+        android:background="@drawable/custom_editext"
         android:layout_width="match_parent"
         android:layout_marginTop="8dp"
         android:gravity="center_vertical"
@@ -41,7 +41,7 @@
     </RelativeLayout>
     <RelativeLayout
         android:id="@+id/relativeLayout_Part6"
-        android:background="@android:color/white"
+        android:background="@drawable/custom_editext"
         android:layout_width="match_parent"
         android:gravity="center_vertical"
         android:layout_height="96dp"
@@ -75,7 +75,7 @@
     </RelativeLayout>
     <RelativeLayout
         android:id="@+id/relativeLayout_Part7"
-        android:background="@android:color/white"
+        android:background="@drawable/custom_editext"
         android:layout_width="match_parent"
         android:gravity="center_vertical"
         android:layout_height="96dp"
