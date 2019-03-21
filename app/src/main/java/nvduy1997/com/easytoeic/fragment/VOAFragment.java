@@ -30,6 +30,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 import nvduy1997.com.easytoeic.R;
+import nvduy1997.com.easytoeic.activity.MainActivity;
 import nvduy1997.com.easytoeic.activity.VideoPlayActivity;
 import nvduy1997.com.easytoeic.adapter.VideoYoutubeAdapter;
 import nvduy1997.com.easytoeic.model.VideoYoutube;
@@ -51,6 +52,7 @@ public class VOAFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_voa, container, false);
+        ((MainActivity)getActivity()).getSupportActionBar().setTitle("VOA Learning English");
         listView = view.findViewById(R.id.lvVideo);
         videoYoutubes = new ArrayList<>();
         GetJsonYoutube(getJson);

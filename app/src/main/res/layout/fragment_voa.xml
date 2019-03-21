@@ -21,6 +21,7 @@
         android:background="@drawable/ic_speaking" />
 
     <ListView
+        android:dividerHeight="4dp"
         android:background="@drawable/custom_background"
         android:id="@+id/lvVideo"
         android:layout_width="match_parent"

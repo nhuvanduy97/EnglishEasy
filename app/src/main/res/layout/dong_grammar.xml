@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-    android:background="@android:color/white"
+    android:background="@drawable/custom_editext"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_marginTop="2dp"
+    android:layout_marginTop="5dp"
     android:layout_marginBottom="2dp"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    >
 
     <LinearLayout
         android:orientation="horizontal"
@@ -25,25 +26,30 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:textColor="#56b48c"
+                android:textStyle="bold"
+                android:textColor="#C51D1D"
                 android:textSize="20sp"
                 android:text="Bài "
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
+                android:textStyle="bold"
                 android:id="@+id/textViewBai"
-                android:textColor="#56b48c"
+                android:textColor="#C51D1D"
                 android:textSize="20sp"
                 android:text="1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
+                android:textStyle="bold"
                 android:textColor="#56b48c"
                 android:textSize="20sp"
                 android:text=" : "
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
+                android:textStyle="bold"
+                android:textColor="#155FAA"
                 android:id="@+id/textViewGrammar"
                 android:textSize="20sp"
                 android:text="Thi hien tai don"

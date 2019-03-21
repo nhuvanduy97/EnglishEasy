@@ -5,8 +5,9 @@
     android:layout_height="match_parent">
 
     <ListView
+        android:dividerHeight="4dp"
         android:id="@+id/ListViewGrammar"
-        android:background="#DDDDDD"
+        android:background="@drawable/custom_background"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
