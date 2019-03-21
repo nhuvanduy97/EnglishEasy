@@ -21,7 +21,6 @@ import nvduy1997.com.easytoeic.fragment.HomeFragment;
 import nvduy1997.com.easytoeic.fragment.ListTestFragment;
 import nvduy1997.com.easytoeic.fragment.ListeningFragment;
 import nvduy1997.com.easytoeic.fragment.ReadingFragment;
-import nvduy1997.com.easytoeic.fragment.QuestionTestFragment;
 import nvduy1997.com.easytoeic.fragment.TopicVocabularyFragment;
 
 import nvduy1997.com.easytoeic.fragment.VOAFragment;

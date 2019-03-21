@@ -1,28 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
+    android:layout_marginTop="5dp"
+    android:background="@drawable/custom_editext"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="16dp">
-    <RelativeLayout
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <ImageView
             android:id="@+id/imgIcon"
-            android:src="@drawable/file"
+            android:src="@drawable/note"
             android:layout_width="60dp"
             android:layout_height="60dp" />
         <TextView
+            android:layout_gravity="center"
             android:id="@+id/textViewTest"
-            android:layout_marginStart="8dp"
-            android:layout_centerInParent="true"
-            android:textSize="20sp"
+            android:layout_marginStart="32dp"
             android:textStyle="bold"
-            android:textColor="#56b48c"
+            android:textColor="#E63D0A"
+            android:textSize="20sp"
             android:text="Test 1"
-            android:layout_toEndOf="@id/imgIcon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
-    </RelativeLayout>
+        <ImageView
+            android:layout_marginLeft="200dp"
+            android:layout_gravity="center"
+            android:src="@drawable/down"
+            android:id="@+id/imgDowloadTestPart1"
+            android:layout_width="24dp"
+            android:layout_height="24dp" />
+    </LinearLayout>
 
 </LinearLayout>

@@ -23,6 +23,7 @@ import java.util.List;
 import java.util.Locale;
 
 import nvduy1997.com.easytoeic.R;
+import nvduy1997.com.easytoeic.activity.MainActivity;
 import nvduy1997.com.easytoeic.adapter.TopicVocabularyAdapter;
 import nvduy1997.com.easytoeic.model.TopicVocabulary;
 import nvduy1997.com.easytoeic.server.APIService;
@@ -44,7 +45,7 @@ public class TopicVocabularyFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_topic_vocabulary, container, false);
-
+        ((MainActivity)getActivity()).getSupportActionBar().setTitle("Topic Vocabulary");
         listView = view.findViewById(R.id.lvTopicVocabulary);
         topicVocabularyArrayList = new ArrayList<>();
         getData();

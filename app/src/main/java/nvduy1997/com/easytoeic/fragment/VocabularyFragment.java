@@ -13,13 +13,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.Toast;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
 import nvduy1997.com.easytoeic.R;
+import nvduy1997.com.easytoeic.activity.MainActivity;
 import nvduy1997.com.easytoeic.adapter.VocabularyAdapter;
 import nvduy1997.com.easytoeic.model.Vocabulary;
 import nvduy1997.com.easytoeic.server.APIService;
@@ -41,6 +40,7 @@ public class VocabularyFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_vocabulary, container, false);
+       ((MainActivity)getActivity()).getSupportActionBar().setTitle("Vocabulary");
         recyclerView = view.findViewById(R.id.lvVocabulary);
 
         textToSpeech = new TextToSpeech(getActivity(), new TextToSpeech.OnInitListener() {

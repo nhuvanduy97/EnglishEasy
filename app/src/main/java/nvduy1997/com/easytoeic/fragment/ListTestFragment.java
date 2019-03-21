@@ -6,11 +6,15 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+
 import java.util.ArrayList;
+
 import nvduy1997.com.easytoeic.R;
 import nvduy1997.com.easytoeic.activity.QuestionActivity;
 import nvduy1997.com.easytoeic.adapter.ListTestAdapter;
@@ -30,7 +34,7 @@ public class ListTestFragment extends Fragment implements ListTestAdapter.OnClic
         recyclerView = view.findViewById(R.id.RecyclerViewTest);
         addTen();
         adapter = new ListTestAdapter(getActivity(), arrayTest);
-        recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayout.VERTICAL, false));
         recyclerView.setAdapter(adapter);
         adapter.setOnClickItemView(this);
         return view;
@@ -56,7 +60,7 @@ public class ListTestFragment extends Fragment implements ListTestAdapter.OnClic
             adapter = new ListTestAdapter(getContext(), arrayTest);
             Intent intent = new Intent(getActivity(), QuestionActivity.class);
             Bundle bundle = new Bundle();
-            bundle.putInt("KEY",test.getId());
+            bundle.putInt("KEY", test.getId());
             intent.putExtras(bundle);
             startActivity(intent);
         }
