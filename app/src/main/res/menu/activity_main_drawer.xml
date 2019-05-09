@@ -5,6 +5,10 @@
 
     <group android:checkableBehavior="single">
         <item
+            android:id="@+id/homeApp"
+            android:icon="@drawable/ic_home_black_24dp"
+            android:title="@string/home"/>
+        <item
             android:id="@+id/vocabolary"
             android:icon="@drawable/ic_vocabolary"
             android:title="@string/vocabulary"/>

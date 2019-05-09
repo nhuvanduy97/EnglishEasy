@@ -31,7 +31,10 @@ public class MainActivity extends AppCompatActivity
         , HomeFragment.OpenRead
         , HomeFragment.OpenDic
         , HomeFragment.OpenVOA
-        , HomeFragment.OpenGrammar {
+        , HomeFragment.OpenGrammar
+        , HomeFragment.OpenListenning
+        ,HomeFragment.OpenVocabulary
+{
 
     private ReadingFragment readingFragment;
     private ListTestFragment listTestFragment;
@@ -57,7 +60,7 @@ public class MainActivity extends AppCompatActivity
 
         HomeFragment homeFragment = new HomeFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.fragment_container,homeFragment);
+        transaction.replace(R.id.fragment_container, homeFragment);
         transaction.commit();
     }
 
@@ -140,6 +143,12 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.about_me) {
 
+        } else if (id == R.id.homeApp) {
+            HomeFragment homeFragment = new HomeFragment();
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.fragment_container, homeFragment);
+            transaction.addToBackStack(null);
+            transaction.commit();
         }
 
 
@@ -201,4 +210,22 @@ public class MainActivity extends AppCompatActivity
         transaction.commit();
     }
 
+
+    @Override
+    public void openListenning() {
+        ListeningFragment listeningFragment = new ListeningFragment();
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_container, listeningFragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
+    }
+
+    @Override
+    public void openVocabulary() {
+        TopicVocabularyFragment topicVocabularyFragment = new TopicVocabularyFragment();
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_container, topicVocabularyFragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
+    }
 }
