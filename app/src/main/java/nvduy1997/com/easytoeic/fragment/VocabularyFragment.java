@@ -1,5 +1,7 @@
 package nvduy1997.com.easytoeic.fragment;
 
+import android.app.Activity;
+import android.app.Dialog;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.support.annotation.NonNull;
@@ -9,10 +11,17 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.SeekBar;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -34,13 +43,18 @@ public class VocabularyFragment extends Fragment {
     private EditText edtSearchVocabulary;
     private TextToSpeech textToSpeech;
     private String voice;
+    private ImageButton btnSettingVoice;
+    private SeekBar sbPitch, sbSpeed;
+    public float pitch, speed;
+    private Button btnSetDiglog;
+    private ImageView btnCloseDiglog;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_vocabulary, container, false);
-       ((MainActivity)getActivity()).getSupportActionBar().setTitle("Vocabulary");
+        ((MainActivity) getActivity()).getSupportActionBar().setTitle("Vocabulary");
         recyclerView = view.findViewById(R.id.lvVocabulary);
 
         textToSpeech = new TextToSpeech(getActivity(), new TextToSpeech.OnInitListener() {
@@ -59,6 +73,8 @@ public class VocabularyFragment extends Fragment {
             getData(idChuDe);
         }
 
+        // click search item
+
         edtSearchVocabulary = view.findViewById(R.id.edtSearchVocabulary);
         edtSearchVocabulary.addTextChangedListener(new TextWatcher() {
             @Override
@@ -75,8 +91,57 @@ public class VocabularyFragment extends Fragment {
             public void afterTextChanged(Editable s) {
                 filter(s.toString());
             }
+
         });
-        getVoice();
+
+        // click setting voice
+
+        btnSettingVoice = view.findViewById(R.id.btnSetingVoice);
+        btnSettingVoice.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final Dialog dialog = new Dialog(getActivity());
+                dialog.setContentView(R.layout.diglog_custom);
+                dialog.setTitle("Setting Voice");
+
+                DisplayMetrics displayMetrics = new DisplayMetrics();
+                ((Activity) getContext()).getWindowManager()
+                        .getDefaultDisplay()
+                        .getMetrics(displayMetrics);
+                int height = (int) (displayMetrics.heightPixels * 0.6f);
+                int width = (int) (displayMetrics.widthPixels * 0.9f);
+                dialog.getWindow().setLayout(width, height);
+
+                btnCloseDiglog = dialog.findViewById(R.id.btnCloseDiglog);
+                btnSetDiglog = dialog.findViewById(R.id.btnSetDiglog);
+                sbPitch = dialog.findViewById(R.id.sbPitch);
+                sbSpeed = dialog.findViewById(R.id.sbSpeed);
+
+                btnCloseDiglog.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                    }
+                });
+                btnSetDiglog.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        pitch = (float) (sbPitch.getProgress() / 50);
+                        if (pitch < 0.1) {
+                            pitch = 0.1f;
+                        }
+                        speed = (float) (sbSpeed.getProgress() / 50);
+                        if (speed < 0.1) {
+                            speed = 0.1f;
+                        }
+                        dialog.dismiss();
+                    }
+
+                });
+                dialog.show();
+            }
+        });
+
         return view;
     }
 
@@ -98,7 +163,10 @@ public class VocabularyFragment extends Fragment {
                     public void onNoteClick(int position) {
 
                         voice = vocabularyArrayList.get(position).getTuenglish();
+                        textToSpeech.setPitch(pitch);
+                        textToSpeech.setSpeechRate(speed);
                         textToSpeech.speak(voice, TextToSpeech.QUEUE_FLUSH, null, null);
+
                     }
                 });
 
@@ -120,10 +188,6 @@ public class VocabularyFragment extends Fragment {
             }
         }
         vocabularyAdapter.filterList(filteredList);
-    }
-
-    public void getVoice() {
-
     }
 
     @Override

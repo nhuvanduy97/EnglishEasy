@@ -13,7 +13,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".activity.QuestionActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
+            android:theme="@style/MyTheme" />
         <activity
             android:name=".activity.MainActivity"
             android:configChanges="screenSize|orientation"
@@ -28,6 +28,13 @@
         <activity
             android:name=".activity.VideoPlayActivity"
             android:screenOrientation="landscape" />
+        <activity
+            android:name=".activity.SplashHomeActivity"
+            android:theme="@style/MyTheme" />
+        <activity android:name=".activity.Part1SlideActivity" />
+        <activity
+            android:name=".activity.ScorePart1Activity"
+            android:theme="@style/MyTheme" />
     </application>
 
 </manifest>

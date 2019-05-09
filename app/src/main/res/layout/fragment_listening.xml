@@ -14,10 +14,10 @@
         android:gravity="center_vertical"
         android:layout_height="96dp">
         <ImageView
+            android:src="@drawable/one"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
             android:id="@+id/imgPart1"
-            android:src="@drawable/one"
             android:layout_width="70dp"
             android:layout_height="70dp" />
         <LinearLayout
@@ -28,7 +28,7 @@
             android:layout_marginRight="8dp"
             android:orientation="vertical">
             <TextView
-                android:textColor="#56b48c"
+                android:textColor="#0287F0"
                 android:textSize="25sp"
                 android:text="Part I"
                 android:layout_width="wrap_content"
@@ -48,10 +48,10 @@
         android:layout_height="96dp"
         android:layout_marginTop="8dp">
         <ImageView
+            android:src="@drawable/two"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
             android:id="@+id/imgPart2"
-            android:src="@drawable/two"
             android:layout_width="70dp"
             android:layout_height="70dp" />
         <LinearLayout
@@ -62,7 +62,7 @@
             android:layout_marginRight="8dp"
             android:orientation="vertical">
             <TextView
-                android:textColor="#56b48c"
+                android:textColor="#0287F0"
                 android:textSize="25sp"
                 android:text="Part II"
                 android:layout_width="wrap_content"
@@ -82,10 +82,10 @@
         android:layout_height="96dp"
         android:layout_marginTop="8dp">
         <ImageView
+            android:src="@drawable/three"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
             android:id="@+id/imgPart3"
-            android:src="@drawable/three"
             android:layout_width="70dp"
             android:layout_height="70dp" />
         <LinearLayout
@@ -96,7 +96,7 @@
             android:layout_marginRight="8dp"
             android:orientation="vertical">
             <TextView
-                android:textColor="#56b48c"
+                android:textColor="#0287F0"
                 android:textSize="25sp"
                 android:text="Part III"
                 android:layout_width="wrap_content"
@@ -117,10 +117,10 @@
         android:layout_height="96dp"
         android:layout_marginTop="8dp">
         <ImageView
+            android:src="@drawable/four"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
             android:id="@+id/imgPart4"
-            android:src="@drawable/four"
             android:layout_width="70dp"
             android:layout_height="70dp" />
         <LinearLayout
@@ -131,7 +131,7 @@
             android:layout_marginRight="8dp"
             android:orientation="vertical">
             <TextView
-                android:textColor="#56b48c"
+                android:textColor="#0287F0"
                 android:textSize="25sp"
                 android:text="Part IV"
                 android:layout_width="wrap_content"

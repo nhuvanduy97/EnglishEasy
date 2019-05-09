@@ -63,7 +63,7 @@ public class QuestionTestFragment extends Fragment {
                 ArrayList<Question> listQuestion = (ArrayList<Question>) response.body();
                 adapter = new QuestionTestAdapter(getActivity(), listQuestion);
                 LinearLayoutManager linearLayout = new LinearLayoutManager(getActivity());
-                linearLayout.setOrientation(LinearLayout.VERTICAL);
+                linearLayout.setOrientation(LinearLayout.HORIZONTAL);
                 recyclerViewQuestion.setLayoutManager(linearLayout);
                 recyclerViewQuestion.setAdapter(adapter);
 

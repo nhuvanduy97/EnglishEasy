@@ -6,6 +6,7 @@ import java.util.List;
 import nvduy1997.com.easytoeic.model.DetailGrammar;
 import nvduy1997.com.easytoeic.model.Grammar;
 import nvduy1997.com.easytoeic.model.Question;
+import nvduy1997.com.easytoeic.model.QuestionPart1;
 import nvduy1997.com.easytoeic.model.TestPart1;
 import nvduy1997.com.easytoeic.model.TopicVocabulary;
 import nvduy1997.com.easytoeic.model.Vocabulary;
@@ -35,4 +36,8 @@ public interface DataService {
 
     @GET("TestPart1.php")
     Call<List<TestPart1>> getTestPart1();
+
+    @FormUrlEncoded
+    @POST("QuestionPart1.php")
+    Call<List<QuestionPart1>> getQuestionPart1(@Field("idTest") String idTest);
 }
