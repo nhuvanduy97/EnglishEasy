@@ -1,5 +1,6 @@
 package nvduy1997.com.easytoeic.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -9,6 +10,7 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -18,6 +20,7 @@ import java.util.List;
 
 import nvduy1997.com.easytoeic.R;
 import nvduy1997.com.easytoeic.activity.MainActivity;
+import nvduy1997.com.easytoeic.activity.Part1SlideActivity;
 import nvduy1997.com.easytoeic.adapter.TestPart1Adapter;
 import nvduy1997.com.easytoeic.model.TestPart1;
 import nvduy1997.com.easytoeic.server.APIService;
@@ -38,7 +41,7 @@ public class TestPart1Fragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_test_part1, container, false);
-        ((MainActivity)getActivity()).getSupportActionBar().setTitle("Part 1");
+        ((MainActivity) getActivity()).getSupportActionBar().setTitle("Part 1");
         listView = view.findViewById(R.id.lvTestPart1);
         testPart1ArrayList = new ArrayList<>();
         getData();
@@ -74,6 +77,14 @@ public class TestPart1Fragment extends Fragment {
                 testPart1ArrayList = (ArrayList<TestPart1>) response.body();
                 testPart1Adapter = new TestPart1Adapter(getActivity(), R.layout.list_test_part1, testPart1ArrayList);
                 listView.setAdapter(testPart1Adapter);
+                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        Intent intent = new Intent(getActivity(), Part1SlideActivity.class);
+                        intent.putExtra("testPart1", testPart1ArrayList.get(position));
+                        startActivity(intent);
+                    }
+                });
             }
 
             @Override
