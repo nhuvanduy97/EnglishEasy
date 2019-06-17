@@ -1,6 +1,7 @@
 package nvduy1997.com.easytoeic.activity;
 
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
@@ -13,6 +14,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AlertDialog;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.AdapterView;
@@ -47,7 +49,7 @@ public class Part1SlideActivity extends FragmentActivity {
     private ImageView imgReturn;
     private SeekBar sbListening;
     private ImageButton btnPlay;
-    private String audio, idTest;
+    private String audio, idTest, nameTest;
     private MediaPlayer mediaPlayer;
     public static ArrayList<QuestionPart1> part1ArrayList;
     public int checkAns = 0;
@@ -72,12 +74,13 @@ public class Part1SlideActivity extends FragmentActivity {
             txtTest.setText(testPart1.getTenTest());
             audio = testPart1.getHinhTest();
             idTest = testPart1.getIdTest();
+            nameTest = testPart1.getTenTest();
         }
 
         getData(idTest);
         eventClick();
         checkClick();
-        showAns();
+        // showAns();
         showScore();
     }
 
@@ -168,11 +171,30 @@ public class Part1SlideActivity extends FragmentActivity {
         txtEndTime = findViewById(R.id.txtEndTime);
         txtStartTime = findViewById(R.id.txtStartTime);
         btnPlay = findViewById(R.id.btnPlayPart1);
+
         imgReturn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
-                mediaPlayer.stop();
+                AlertDialog.Builder builder = new AlertDialog.Builder(Part1SlideActivity.this);
+                builder.setIcon(R.drawable.exit);
+                builder.setTitle("Notification");
+                builder.setMessage("Do you want to exit?");
+                builder.setNegativeButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish();
+                        mediaPlayer.stop();
+                    }
+                });
+
+                builder.setPositiveButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+                builder.show();
+
             }
         });
     }
@@ -298,6 +320,7 @@ public class Part1SlideActivity extends FragmentActivity {
                 part1ArrayList = (ArrayList<QuestionPart1>) response.body();
                 pagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
                 mPager.setAdapter(pagerAdapter);
+                checkActivity();
 
             }
 
@@ -384,11 +407,11 @@ public class Part1SlideActivity extends FragmentActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(Part1SlideActivity.this, ScorePart1Activity.class);
                 intent.putExtra("arrQuess", part1ArrayList);
+                intent.putExtra("nameTest", nameTest);
                 startActivity(intent);
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
     }
-
 }
 

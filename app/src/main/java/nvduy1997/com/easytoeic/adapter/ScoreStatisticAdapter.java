@@ -1,6 +1,8 @@
 package nvduy1997.com.easytoeic.adapter;
 
+
 import android.content.Context;
+import android.database.Cursor;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,29 +12,26 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.squareup.picasso.Picasso;
-
-import java.util.ArrayList;
 import java.util.List;
 
 import nvduy1997.com.easytoeic.R;
-import nvduy1997.com.easytoeic.model.TopicVocabulary;
-import nvduy1997.com.easytoeic.model.Vocabulary;
+import nvduy1997.com.easytoeic.model.Score;
 
-public class TopicVocabularyAdapter extends BaseAdapter {
+public class ScoreStatisticAdapter extends BaseAdapter {
+
     private Context context;
     private int layout;
-    private List<TopicVocabulary> topicVocabularyList;
+    private List<Score> scoreList;
 
-    public TopicVocabularyAdapter(Context context, int layout, List<TopicVocabulary> topicVocabularyList) {
+    public ScoreStatisticAdapter(Context context, int layout, List<Score> scoreList) {
         this.context = context;
         this.layout = layout;
-        this.topicVocabularyList = topicVocabularyList;
+        this.scoreList = scoreList;
     }
 
     @Override
     public int getCount() {
-        return topicVocabularyList.size();
+        return scoreList.size();
     }
 
     @Override
@@ -46,8 +45,8 @@ public class TopicVocabularyAdapter extends BaseAdapter {
     }
 
     private class ViewHolder {
-        TextView txtTopic;
-        ImageView imgTopic, imgDowloadTopic;
+        TextView txtTestStatis, txtScoreStatis, txtDateStatis;
+        ImageView imgScore;
     }
 
     @Override
@@ -57,27 +56,25 @@ public class TopicVocabularyAdapter extends BaseAdapter {
             viewHolder = new ViewHolder();
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(layout, null);
-            viewHolder.imgTopic = convertView.findViewById(R.id.imgTopic);
-            viewHolder.txtTopic = convertView.findViewById(R.id.txtTopic);
-            viewHolder.imgDowloadTopic = convertView.findViewById(R.id.imgDowloadTopic);
-            convertView.setTag(viewHolder);
 
+            viewHolder.txtDateStatis = convertView.findViewById(R.id.txtDateStatis);
+            viewHolder.txtScoreStatis = convertView.findViewById(R.id.txtScoreStatis);
+            viewHolder.txtTestStatis = convertView.findViewById(R.id.txtTestStatis);
+            viewHolder.imgScore = convertView.findViewById(R.id.imgScore);
+
+            convertView.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
-        TopicVocabulary topicVocabulary = topicVocabularyList.get(position);
-        viewHolder.txtTopic.setText(topicVocabulary.getTenchude());
-        Picasso.with(context).load(topicVocabulary.getHinhchude()).into(viewHolder.imgTopic);
-        viewHolder.imgDowloadTopic.setImageResource(R.drawable.down);
+
+        Score score = scoreList.get(position);
+        viewHolder.txtDateStatis.setText(score.getDate());
+        viewHolder.txtTestStatis.setText(score.getPart() + " - " + score.getName());
+        viewHolder.txtScoreStatis.setText("Score : " + score.getScore());
+        viewHolder.imgScore.setImageResource(R.drawable.document);
 
         Animation animation = AnimationUtils.loadAnimation(context, R.anim.scale_list);
         convertView.startAnimation(animation);
-
         return convertView;
-    }
-
-    public void filterList(ArrayList<TopicVocabulary> filteredList) {
-        topicVocabularyList = filteredList;
-        notifyDataSetChanged();
     }
 }

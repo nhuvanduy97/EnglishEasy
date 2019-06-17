@@ -10,9 +10,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import nvduy1997.com.easytoeic.R;
+import nvduy1997.com.easytoeic.activity.MainActivity;
 import nvduy1997.com.easytoeic.adapter.GrammarAdapter;
 import nvduy1997.com.easytoeic.model.Grammar;
 import nvduy1997.com.easytoeic.server.APIService;
@@ -21,7 +24,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class GrammarFragment extends Fragment  {
+public class GrammarFragment extends Fragment {
     private View view;
     private ListView listViewGrammar;
     private GrammarAdapter adapter;
@@ -33,7 +36,7 @@ public class GrammarFragment extends Fragment  {
         super.onAttach(context);
         try {
             listen = (OpenFragmentDetail) context;
-        }catch (ClassCastException e){
+        } catch (ClassCastException e) {
             throw new ClassCastException(context.toString() + " must implement OnClickOpenFragment");
         }
     }
@@ -41,21 +44,22 @@ public class GrammarFragment extends Fragment  {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_grammar,container,false);
+        view = inflater.inflate(R.layout.fragment_grammar, container, false);
+        ((MainActivity) getActivity()).getSupportActionBar().setTitle(" Topic Grammar");
         listViewGrammar = view.findViewById(R.id.ListViewGrammar);
         gettAllGrammar();
         return view;
     }
 
 
-    private void gettAllGrammar(){
+    private void gettAllGrammar() {
         DataService dataService = APIService.getService();
         Call<List<Grammar>> callBack = dataService.getAllGrammar();
         callBack.enqueue(new Callback<List<Grammar>>() {
             @Override
             public void onResponse(Call<List<Grammar>> call, Response<List<Grammar>> response) {
                 final ArrayList<Grammar> arrayGrammr = (ArrayList<Grammar>) response.body();
-                adapter = new GrammarAdapter(arrayGrammr,getContext());
+                adapter = new GrammarAdapter(arrayGrammr, getContext());
                 listViewGrammar.setAdapter(adapter);
                 listViewGrammar.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
@@ -73,7 +77,7 @@ public class GrammarFragment extends Fragment  {
         });
     }
 
-    public interface OpenFragmentDetail{
+    public interface OpenFragmentDetail {
         void Open(int id);
     }
 

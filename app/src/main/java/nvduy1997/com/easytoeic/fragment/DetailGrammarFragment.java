@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import nvduy1997.com.easytoeic.R;
+import nvduy1997.com.easytoeic.activity.MainActivity;
 import nvduy1997.com.easytoeic.adapter.DetailGrammarAdapter;
 import nvduy1997.com.easytoeic.model.DetailGrammar;
 import nvduy1997.com.easytoeic.server.APIService;
@@ -29,11 +30,12 @@ public class DetailGrammarFragment extends Fragment {
     private ListView listViewDetail;
     private DetailGrammarAdapter adapter;
     private int idGrammar;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Bundle bundle = getArguments();
-        if (bundle != null){
+        if (bundle != null) {
             idGrammar = bundle.getInt("KEY");
         }
     }
@@ -41,20 +43,21 @@ public class DetailGrammarFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_detail_grammar,container,false);
+        view = inflater.inflate(R.layout.fragment_detail_grammar, container, false);
+        ((MainActivity) getActivity()).getSupportActionBar().setTitle("Grammar");
         listViewDetail = view.findViewById(R.id.ListViewDetail);
         getDetailGrammar(String.valueOf(idGrammar));
         return view;
     }
 
-    private void getDetailGrammar(String idGrammar){
+    private void getDetailGrammar(String idGrammar) {
         DataService dataService = APIService.getService();
         Call<List<DetailGrammar>> callback = dataService.getDetailgrammar(idGrammar);
         callback.enqueue(new Callback<List<DetailGrammar>>() {
             @Override
             public void onResponse(Call<List<DetailGrammar>> call, Response<List<DetailGrammar>> response) {
                 detailGrammarArrayList = (ArrayList<DetailGrammar>) response.body();
-                adapter = new DetailGrammarAdapter(detailGrammarArrayList,getContext());
+                adapter = new DetailGrammarAdapter(detailGrammarArrayList, getContext());
                 listViewDetail.setAdapter(adapter);
             }
 

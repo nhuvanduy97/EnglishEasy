@@ -45,7 +45,7 @@ public class TopicVocabularyFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_topic_vocabulary, container, false);
-        ((MainActivity)getActivity()).getSupportActionBar().setTitle("Topic Vocabulary");
+        ((MainActivity) getActivity()).getSupportActionBar().setTitle("Topic Vocabulary");
         listView = view.findViewById(R.id.lvTopicVocabulary);
         topicVocabularyArrayList = new ArrayList<>();
         getData();
@@ -100,6 +100,7 @@ public class TopicVocabularyFragment extends Fragment {
 
                         FragmentTransaction transaction = getFragmentManager().beginTransaction();
                         transaction.replace(R.id.fragment_container, vocabularyFragment);
+                        transaction.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left);
                         transaction.addToBackStack(null);
                         transaction.commit();
 
