@@ -66,8 +66,8 @@ public class HomeFragment extends Fragment {
         lvMenu = view.findViewById(R.id.lvMenu);
         frombottom = AnimationUtils.loadAnimation(getActivity(), R.anim.frombottom);
 
-        imgSplashHome.animate().translationY(-2200).setDuration(800).setStartDelay(300);
-        imgTree.animate().alpha(0).setDuration(800).setStartDelay(600);
+        imgSplashHome.animate().translationY(-1600).setDuration(800).setStartDelay(300);
+        imgTree.animate().alpha(2).setDuration(800).setStartDelay(600);
         txtSplash1.animate().translationY(140).alpha(0).setDuration(800).setStartDelay(600);
         txtSplash2.animate().translationY(140).alpha(0).setDuration(800).setStartDelay(600);
         txtSplash3.startAnimation(frombottom);
@@ -90,7 +90,7 @@ public class HomeFragment extends Fragment {
         lnListen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               openListenning.openListenning();
+                openListenning.openListenning();
             }
         });
         lnVoa = view.findViewById(R.id.linear_voa_english);
@@ -140,6 +140,7 @@ public class HomeFragment extends Fragment {
     public interface OpenVocabulary {
         void openVocabulary();
     }
+
     public void chooseAlerDiglog() {
         AlertDialog.Builder alertDiglog = new AlertDialog.Builder(getActivity());
         alertDiglog.setTitle("Warning");
