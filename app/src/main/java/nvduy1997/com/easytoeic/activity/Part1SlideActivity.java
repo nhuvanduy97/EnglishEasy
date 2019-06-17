@@ -16,6 +16,7 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -346,6 +347,7 @@ public class Part1SlideActivity extends FragmentActivity {
         Button btnCloseCheck, btnFinishCheck;
 
         CheckAnswerPart1Adapter checkAnswerPart1Adapter = new CheckAnswerPart1Adapter(part1ArrayList, this);
+        Log.e("checkAnswer", "checkAnswer: " + part1ArrayList.size() );
         GridView gvCheckAns = dialog.findViewById(R.id.gvCheckAns);
         gvCheckAns.setAdapter(checkAnswerPart1Adapter);
 
