@@ -1,11 +1,13 @@
 package nvduy1997.com.easytoeic.fragment;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -88,7 +90,7 @@ public class HomeFragment extends Fragment {
         lnListen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openListenning.openListenning();
+               openListenning.openListenning();
             }
         });
         lnVoa = view.findViewById(R.id.linear_voa_english);
@@ -137,5 +139,28 @@ public class HomeFragment extends Fragment {
 
     public interface OpenVocabulary {
         void openVocabulary();
+    }
+    public void chooseAlerDiglog() {
+        AlertDialog.Builder alertDiglog = new AlertDialog.Builder(getActivity());
+        alertDiglog.setTitle("Warning");
+        alertDiglog.setIcon(R.drawable.nowifi);
+        alertDiglog.setMessage("You are not connected to the internet!Do you want to turn on wifi to continue");
+
+        alertDiglog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                //wifiManager.setWifiEnabled(true);
+                openListenning.openListenning();
+            }
+        });
+
+        alertDiglog.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+
+        alertDiglog.show();
     }
 }

@@ -3,6 +3,9 @@
     package="nvduy1997.com.easytoeic">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -11,9 +14,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity
-            android:name=".activity.QuestionActivity"
-            android:theme="@style/MyTheme" />
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+
         <activity
             android:name=".activity.MainActivity"
             android:configChanges="screenSize|orientation"
@@ -26,6 +30,9 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".activity.QuestionActivity"
+            android:theme="@style/MyTheme" />
+        <activity
             android:name=".activity.VideoPlayActivity"
             android:screenOrientation="landscape" />
         <activity
@@ -35,6 +42,11 @@
         <activity
             android:name=".activity.ScorePart1Activity"
             android:theme="@style/MyTheme" />
+
+        <provider
+            android:name="com.facebook.FacebookContentProvider"
+            android:authorities="com.facebook.app.FacebookContentProvider1040203079520227"
+            android:exported="true" />
     </application>
 
 </manifest>

@@ -27,7 +27,7 @@
             android:title="@string/grammar_english"/>
         <item android:id="@+id/dictionary"
             android:icon="@drawable/ic_dictonary"
-            android:title="@string/dictionary"/>
+            android:title="Score Statistics"/>
         <item android:id="@+id/voa"
             android:icon="@drawable/ic_voa_english"
             android:title="@string/voa_learning_english"/>

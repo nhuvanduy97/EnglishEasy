@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">ToeicTBD</string>
+    <string name="facebook_app_id">1040203079520227</string>
+    <string name="facebook_login_protocol_scheme">fb1040203079520227</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="action_settings">Settings</string>

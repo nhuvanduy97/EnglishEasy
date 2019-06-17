@@ -5,6 +5,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -67,6 +69,11 @@ public class GrammarAdapter extends BaseAdapter {
         viewHolder.textViewBai.setText(grammar.getId());
         viewHolder.textViewGrammar.setText(grammar.getTen());
         Picasso.with(context).load(grammar.getHinhAnh()).into(viewHolder.idImgViewGrammar);
+
+
+        Animation animation = AnimationUtils.loadAnimation(context, R.anim.scale_list);
+        convertView.startAnimation(animation);
+
         return convertView;
     }
 }
