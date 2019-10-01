@@ -89,12 +89,12 @@ public class QuestionTestFragment extends Fragment {
         QuestionTestFragment frg = new QuestionTestFragment();
         Bundle bundle = new Bundle();
         bundle.putInt(ARG_PAGE, pageNumber);
-        bundle.putInt(ARG_CHECK,checkAnswer);
+        bundle.putInt(ARG_CHECK, checkAnswer);
         frg.setArguments(bundle);
         return frg;
     }
 
-    private void getDataQuestion(){
+    private void getDataQuestion() {
         DataService dataService = APIService.getService();
         Call<List<Question>> callback = dataService.getQuestionP5Test1();
         callback.enqueue(new Callback<List<Question>>() {
@@ -102,14 +102,14 @@ public class QuestionTestFragment extends Fragment {
             @Override
             public void onResponse(Call<List<Question>> call, Response<List<Question>> response) {
                 array = (ArrayList<Question>) response.body();
-                tvNum.setText("Câu "+ (mPagerNumber + 1));
+                tvNum.setText("Câu " + (mPagerNumber + 1));
                 tvQ.setText(array.get(mPagerNumber).getTen());
                 radA.setText(array.get(mPagerNumber).getA());
                 radB.setText(array.get(mPagerNumber).getB());
                 radC.setText(array.get(mPagerNumber).getC());
                 radD.setText(array.get(mPagerNumber).getD());
 
-                if (checkAns != 0){
+                if (checkAns != 0) {
                     radA.setClickable(false);
                     radB.setClickable(false);
                     radC.setClickable(false);
@@ -125,12 +125,18 @@ public class QuestionTestFragment extends Fragment {
 //                        Toast.makeText(getContext(),array.get(mPagerNumber).getTraloi(),Toast.LENGTH_SHORT).show();
                         DatabasManager databasManager = new DatabasManager(getContext());
                         Dapan dapan = new Dapan();
-                        dapan.setCauHoi((mPagerNumber+1));
+                        dapan.setCauHoi((mPagerNumber + 1));
                         dapan.setDa(getChoiceFromID(checkedId));
                         dapan.setKetQua(array.get((mPagerNumber)).getCheck());
                         Log.e("onCheckedChanged", "onCheckedChanged: " + array.get((mPagerNumber)).getCheck());
-                     //   databasManager.addDA(dapan);
-                       databasManager.UpdateDa(dapan);
+                        // databasManager.addDA(dapan);
+                        databasManager.UpdateDa(dapan);
+//                        if (databasManager.getAllDapAn() == null){
+//                            databasManager.addDA(dapan);
+//                        }else
+//                        {
+//                            databasManager.UpdateDa(dapan);
+//                        }
                     }
                 });
             }
@@ -141,6 +147,7 @@ public class QuestionTestFragment extends Fragment {
             }
         });
     }
+
     private String getChoiceFromID(int ID) {
         if (ID == R.id.radA) {
             return "A";
@@ -156,17 +163,14 @@ public class QuestionTestFragment extends Fragment {
     }
 
     // Ham kiem tra cac cau dung
-    private void CheckAnswer(String ans){
-        if (ans.equals("A")){
+    private void CheckAnswer(String ans) {
+        if (ans.equals("A")) {
             radA.setBackgroundColor(Color.BLUE);
-        }
-        else if (ans.equals("B")){
+        } else if (ans.equals("B")) {
             radB.setBackgroundColor(Color.BLUE);
-        }
-        else if (ans.equals("C")){
+        } else if (ans.equals("C")) {
             radC.setBackgroundColor(Color.BLUE);
-        }
-        else if (ans.equals("D")){
+        } else if (ans.equals("D")) {
             radD.setBackgroundColor(Color.BLUE);
         }
     }

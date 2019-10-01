@@ -66,8 +66,8 @@ public class GrammarAdapter extends BaseAdapter {
             viewHolder = (ViewHolder) convertView.getTag();
         }
         Grammar grammar = grammars.get(position);
-        viewHolder.textViewBai.setText(grammar.getId());
-        viewHolder.textViewGrammar.setText(grammar.getTen());
+      //  viewHolder.textViewBai.setText(grammar.getId());
+      //  viewHolder.textViewGrammar.setText(grammar.getTen());
         Picasso.with(context).load(grammar.getHinhAnh()).into(viewHolder.idImgViewGrammar);
 
 

@@ -55,8 +55,6 @@ public class Part1SlideActivity extends FragmentActivity {
     public static ArrayList<QuestionPart1> part1ArrayList;
     public int checkAns = 0;
 
-    private ImageButton btnShow;
-
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,24 +76,12 @@ public class Part1SlideActivity extends FragmentActivity {
             nameTest = testPart1.getTenTest();
         }
 
+        Log.d("PART11111", "onCreate: " + txtTest + " " + audio + " " + idTest + " " + nameTest);
+
         getData(idTest);
         eventClick();
         checkClick();
-        // showAns();
         showScore();
-    }
-
-    public void checkActivity() {
-        CheckAnswerPart1Adapter part1Adapter = new CheckAnswerPart1Adapter(part1ArrayList, this);
-        GridView gvCheckPart1 = findViewById(R.id.gvCheckPart1);
-        gvCheckPart1.setAdapter(part1Adapter);
-        gvCheckPart1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                mPager.setCurrentItem(position);
-            }
-        });
-
     }
 
     private void eventClick() {
@@ -321,7 +307,6 @@ public class Part1SlideActivity extends FragmentActivity {
                 part1ArrayList = (ArrayList<QuestionPart1>) response.body();
                 pagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
                 mPager.setAdapter(pagerAdapter);
-                checkActivity();
 
             }
 
@@ -347,7 +332,7 @@ public class Part1SlideActivity extends FragmentActivity {
         Button btnCloseCheck, btnFinishCheck;
 
         CheckAnswerPart1Adapter checkAnswerPart1Adapter = new CheckAnswerPart1Adapter(part1ArrayList, this);
-        Log.e("checkAnswer", "checkAnswer: " + part1ArrayList.size() );
+        Log.e("checkAnswer", "checkAnswer: " + part1ArrayList.size());
         GridView gvCheckAns = dialog.findViewById(R.id.gvCheckAns);
         gvCheckAns.setAdapter(checkAnswerPart1Adapter);
 
@@ -391,16 +376,6 @@ public class Part1SlideActivity extends FragmentActivity {
 
         txtScorePart1.setVisibility(View.VISIBLE);
         txtCheck.setVisibility(View.GONE);
-    }
-
-    public void showAns() {
-        btnShow = findViewById(R.id.btnShow);
-        btnShow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                checkActivity();
-            }
-        });
     }
 
     public void showScore() {

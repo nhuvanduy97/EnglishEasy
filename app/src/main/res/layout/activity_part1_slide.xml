@@ -108,43 +108,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.5"
-            android:background="#fcfac1">
-
-            <ImageButton
-                android:id="@+id/btnShow"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:background="@null"
-                android:src="@drawable/ic_remove_red_eye_black_24dp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/lnCheckAns"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginLeft="10dp"
-            android:layout_weight="3"
-            android:background="#fcfac1"
-            android:orientation="vertical"
-            android:padding="8dp">
-
-            <GridView
-                android:id="@+id/gvCheckPart1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:dividerHeight="5dp"
-                android:numColumns="3">
-
-            </GridView>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
             android:layout_weight="2"
             android:background="#fcfac1"
             android:orientation="vertical">

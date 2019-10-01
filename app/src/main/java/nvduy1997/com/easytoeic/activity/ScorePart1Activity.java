@@ -118,7 +118,7 @@ public class ScorePart1Activity extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         Calendar calendar = Calendar.getInstance();
                         date = DateFormat.getDateInstance(DateFormat.FULL).format(calendar.getTime());
-                        Score score = new Score(nameTest, "Part1", date, totalScore);
+                        Score score = new Score(nameTest, "Part1", date, totalScore, numTrue, numFalse, numNotAns);
                         databaseManager.addScore(score);
 
                         Toast.makeText(ScorePart1Activity.this, "Save Score Successfull", Toast.LENGTH_SHORT).show();
@@ -207,9 +207,8 @@ public class ScorePart1Activity extends AppCompatActivity {
                 }
         );
         ShareLinkContent shareLinkContent = new ShareLinkContent.Builder()
-                .setQuote("This is useful score")
-                .setContentUrl(Uri.parse("https://www.youtube.com/watch?v=qJO95gobQkM"))
-                //.setContentUrl(Uri.parse("Part1 - " + nameTest + " - " + date + " : " + totalScore))
+                .setQuote("This is App Toeic TBD - " + nameTest + " - Part1 - Score : " + totalScore)
+                .setContentUrl(Uri.parse("https://www.youtube.com/watch?v=TRm4ge-P0As"))
                 .build();
 
         if (ShareDialog.canShow(ShareLinkContent.class)) {

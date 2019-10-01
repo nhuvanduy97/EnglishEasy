@@ -45,7 +45,7 @@ public class ScoreStatisticAdapter extends BaseAdapter {
     }
 
     private class ViewHolder {
-        TextView txtTestStatis, txtScoreStatis, txtDateStatis;
+        TextView txtTestStatis, txtScoreStatis, txtDateStatis, txtNumAnsScore;
         ImageView imgScore;
     }
 
@@ -61,6 +61,7 @@ public class ScoreStatisticAdapter extends BaseAdapter {
             viewHolder.txtScoreStatis = convertView.findViewById(R.id.txtScoreStatis);
             viewHolder.txtTestStatis = convertView.findViewById(R.id.txtTestStatis);
             viewHolder.imgScore = convertView.findViewById(R.id.imgScore);
+            viewHolder.txtNumAnsScore = convertView.findViewById(R.id.txtNumAnsScore);
 
             convertView.setTag(viewHolder);
         } else {
@@ -71,6 +72,7 @@ public class ScoreStatisticAdapter extends BaseAdapter {
         viewHolder.txtDateStatis.setText(score.getDate());
         viewHolder.txtTestStatis.setText(score.getPart() + " - " + score.getName());
         viewHolder.txtScoreStatis.setText("Score : " + score.getScore());
+        viewHolder.txtNumAnsScore.setText("Correct : " + score.getNumCorrect() + " - Fail : " + score.getNumFail() + " - Not : " + score.getNumNotAns());
         viewHolder.imgScore.setImageResource(R.drawable.document);
 
         Animation animation = AnimationUtils.loadAnimation(context, R.anim.scale_list);
