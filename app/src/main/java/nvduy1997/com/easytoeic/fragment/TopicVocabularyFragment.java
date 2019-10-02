@@ -46,6 +46,7 @@ public class TopicVocabularyFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_topic_vocabulary, container, false);
         ((MainActivity) getActivity()).getSupportActionBar().setTitle("Topic Vocabulary");
+
         listView = view.findViewById(R.id.lvTopicVocabulary);
         topicVocabularyArrayList = new ArrayList<>();
         getData();

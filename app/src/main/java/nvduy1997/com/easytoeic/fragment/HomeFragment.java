@@ -66,7 +66,7 @@ public class HomeFragment extends Fragment {
         lvMenu = view.findViewById(R.id.lvMenu);
         frombottom = AnimationUtils.loadAnimation(getActivity(), R.anim.frombottom);
 
-        imgSplashHome.animate().translationY(-1600).setDuration(800).setStartDelay(300);
+        imgSplashHome.animate().translationY(-1800).setDuration(800).setStartDelay(300);
         imgTree.animate().alpha(2).setDuration(800).setStartDelay(600);
         txtSplash1.animate().translationY(140).alpha(0).setDuration(800).setStartDelay(600);
         txtSplash2.animate().translationY(140).alpha(0).setDuration(800).setStartDelay(600);

@@ -18,15 +18,24 @@ public class DatabaseManager extends SQLiteOpenHelper {
     private static final String PART = "part";
     private static final String DATE = "date";
     private static final String SCORE = "score";
+    private static final String CORRECT = "correct";
+    private static final String FAIL = "fails";
+    private static final String NOTANS = "notans";
+
     private static final int VERSION = 1;
 
+    private String CREATE_TABLE = "CREATE TABLE Score(_id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT," +
+        " part TEXT, date TEXT, score TEXT, correct TEXT, fails TEXT, notans TEXT)";
 
-    private String sqlQuery = "CREATE TABLE " + TABLE_NAME + " (" +
-            ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-            NAME + " TEXT, " +
-            PART + " TEXT, " +
-            DATE + " TEXT, " +
-            SCORE + " INTEGER)";
+//    private String sqlQuery = "CREATE TABLE " + TABLE_NAME + " (" +
+//            ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+//            NAME + " TEXT, " +
+//            PART + " TEXT, " +
+//            DATE + " TEXT, " +
+//            SCORE + " TEXT," +
+//            CORRECT + "TEXT," +
+//            FAIL + "TEXT," +
+//            NOTANS + "TEXT)";
 
 
     public DatabaseManager(Context context) {
@@ -36,8 +45,8 @@ public class DatabaseManager extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL(sqlQuery);
-
+//        db.execSQL(sqlQuery);
+        db.execSQL(CREATE_TABLE);
     }
 
     @Override
@@ -52,12 +61,16 @@ public class DatabaseManager extends SQLiteOpenHelper {
         values.put(PART, score.getPart());
         values.put(DATE, score.getDate());
         values.put(SCORE, score.getScore());
+        values.put(CORRECT, score.getNumCorrect());
+        values.put(FAIL, score.getNumFail());
+        values.put(NOTANS, score.getNumNotAns());
+
         database.insert(TABLE_NAME, null, values);
         database.close();
     }
 
     public ArrayList<Score> getAllScore() {
-        SQLiteDatabase database = getReadableDatabase();
+        SQLiteDatabase database = this.getReadableDatabase();
         ArrayList<Score> arrayNote = new ArrayList<>();
         String query = "SELECT * FROM " + TABLE_NAME + " ORDER BY _id DESC";
 
@@ -68,6 +81,10 @@ public class DatabaseManager extends SQLiteOpenHelper {
             note.setPart(cursor.getString(2));
             note.setDate(cursor.getString(3));
             note.setScore(cursor.getInt(4));
+            note.setNumCorrect(cursor.getInt(5));
+            note.setNumFail(cursor.getInt(6));
+            note.setNumNotAns(cursor.getInt(7));
+
             arrayNote.add(note);
         }
         cursor.close();

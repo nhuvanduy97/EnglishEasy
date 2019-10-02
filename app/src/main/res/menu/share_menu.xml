@@ -2,6 +2,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:title="Share Facebook"
         android:id="@+id/shareFB"/>
-    <item android:title="Share Google"
+    <item android:title="Share Other"
         android:id="@+id/shareGG"/>
 </menu>
