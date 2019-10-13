@@ -134,7 +134,7 @@
                 <ImageView
                     android:layout_width="100dp"
                     android:layout_height="90dp"
-                    android:src="@drawable/listenenglish" />
+                    android:src="@drawable/listenning" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -189,7 +189,7 @@
                 <ImageView
                     android:layout_width="100dp"
                     android:layout_height="90dp"
-                    android:src="@drawable/grammarenglish" />
+                    android:src="@drawable/grammaricon" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -211,7 +211,7 @@
                 <ImageView
                     android:layout_width="100dp"
                     android:layout_height="90dp"
-                    android:src="@drawable/vocabularyenglish" />
+                    android:src="@drawable/vocabularyicon" />
 
                 <TextView
                     android:layout_width="wrap_content"

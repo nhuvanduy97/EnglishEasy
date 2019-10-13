@@ -5,9 +5,6 @@ import android.app.Service;
 import android.content.Context;
 import android.content.DialogInterface;
 
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.Signature;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.wifi.WifiManager;
@@ -21,20 +18,13 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Base64;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
-
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 
 import nvduy1997.com.easytoeic.R;
 import nvduy1997.com.easytoeic.fragment.DetailGrammarFragment;
 import nvduy1997.com.easytoeic.fragment.GrammarFragment;
 import nvduy1997.com.easytoeic.fragment.HomeFragment;
-import nvduy1997.com.easytoeic.fragment.ListTestFragment;
 import nvduy1997.com.easytoeic.fragment.ListeningFragment;
 import nvduy1997.com.easytoeic.fragment.ReadingFragment;
 import nvduy1997.com.easytoeic.fragment.ScoreStatisticsFragment;
@@ -44,7 +34,6 @@ import nvduy1997.com.easytoeic.fragment.VOAFragment;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener
-        , ReadingFragment.OnClickOpenFragment
         , GrammarFragment.OpenFragmentDetail
         , HomeFragment.OpenRead
         , HomeFragment.OpenDic
@@ -54,7 +43,6 @@ public class MainActivity extends AppCompatActivity
         , HomeFragment.OpenVocabulary {
 
     private ReadingFragment readingFragment;
-    private ListTestFragment listTestFragment;
     private Toolbar toolbar;
     private WifiManager wifiManager;
 
@@ -231,15 +219,6 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
-    }
-
-    @Override
-    public void onClickOpenFragment() {
-        if (listTestFragment == null) {
-            listTestFragment = new ListTestFragment();
-        }
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, listTestFragment).addToBackStack(null).commit();
-
     }
 
     @Override

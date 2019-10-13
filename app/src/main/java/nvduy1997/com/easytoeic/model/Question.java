@@ -40,6 +40,31 @@ public class Question implements Parcelable{
 
     public int choiceID = -1;
 
+    protected Question(Parcel in) {
+        id = in.readString();
+        ten = in.readString();
+        a = in.readString();
+        b = in.readString();
+        c = in.readString();
+        d = in.readString();
+        check = in.readString();
+        test = in.readString();
+        traloi = in.readString();
+        choiceID = in.readInt();
+    }
+
+    public static final Creator<Question> CREATOR = new Creator<Question>() {
+        @Override
+        public Question createFromParcel(Parcel in) {
+            return new Question(in);
+        }
+
+        @Override
+        public Question[] newArray(int size) {
+            return new Question[size];
+        }
+    };
+
     public String getId() {
         return id;
     }
@@ -119,6 +144,15 @@ public class Question implements Parcelable{
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-
+        dest.writeString(id);
+        dest.writeString(ten);
+        dest.writeString(a);
+        dest.writeString(b);
+        dest.writeString(c);
+        dest.writeString(d);
+        dest.writeString(check);
+        dest.writeString(test);
+        dest.writeString(traloi);
+        dest.writeInt(choiceID);
     }
 }

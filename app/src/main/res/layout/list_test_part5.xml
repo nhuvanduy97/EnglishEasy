@@ -2,32 +2,33 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:padding="8dp"
     android:layout_marginTop="5dp"
     android:background="@drawable/custom_editext"
-    >
+    android:orientation="horizontal"
+    android:padding="8dp">
 
     <ImageView
-        android:scaleType="fitXY"
-        android:src="@drawable/headphone"
-        android:id="@+id/imgTestPart1"
+        android:id="@+id/imgTestPart5"
         android:layout_width="80dp"
-        android:layout_height="80dp" />
+        android:layout_height="80dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/note" />
+
     <TextView
+        android:id="@+id/txtTestPart5"
+        android:layout_width="260dp"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
-        android:id="@+id/txtTestPart1"
-        android:textStyle="bold"
         android:layout_marginTop="18dp"
         android:padding="8dp"
         android:textColor="#E63D0A"
         android:textSize="20sp"
-        android:layout_width="260dp"
-        android:layout_height="wrap_content" />
+        android:textStyle="bold" />
+
     <ImageView
-        android:src="@drawable/down"
-        android:id="@+id/imgDowloadTestPart1"
-        android:layout_marginTop="28dp"
+        android:id="@+id/imgDowloadTestPart5"
         android:layout_width="24dp"
-        android:layout_height="24dp" />
+        android:layout_height="24dp"
+        android:layout_marginTop="28dp"
+        android:src="@drawable/down" />
 </LinearLayout>

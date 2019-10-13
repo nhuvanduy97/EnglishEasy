@@ -8,6 +8,9 @@ import nvduy1997.com.easytoeic.model.Grammar;
 import nvduy1997.com.easytoeic.model.Question;
 import nvduy1997.com.easytoeic.model.QuestionPart1;
 import nvduy1997.com.easytoeic.model.TestPart1;
+import nvduy1997.com.easytoeic.model.TestPart5;
+import nvduy1997.com.easytoeic.model.TestPart6;
+import nvduy1997.com.easytoeic.model.TestPart7;
 import nvduy1997.com.easytoeic.model.TopicVocabulary;
 import nvduy1997.com.easytoeic.model.Vocabulary;
 import retrofit2.Call;
@@ -40,4 +43,15 @@ public interface DataService {
     @FormUrlEncoded
     @POST("QuestionPart1.php")
     Call<List<QuestionPart1>> getQuestionPart1(@Field("idTest") String idTest);
+
+    @GET("allTestPart5.php")
+    Call<List<TestPart5>> getTestPart5();
+
+    @GET("TestPart6.php")
+    Call<List<TestPart6>> getTestPart6();
+
+    @GET("TestPart7.php")
+    Call<List<TestPart7>> getTestPart7();
+
+
 }
