@@ -25,7 +25,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/tvNum"
+                    android:id="@+id/tvNumPart5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -35,7 +35,7 @@
                     android:text="Câu 1" />
 
                 <TextView
-                    android:id="@+id/tvQuestion"
+                    android:id="@+id/tvQuestionPart5"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="20sp"
@@ -54,13 +54,13 @@
                 android:visibility="visible" />
 
             <RadioGroup
-                android:id="@+id/radGroup"
+                android:id="@+id/radGroupPart5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingLeft="5dp">
 
                 <RadioButton
-                    android:id="@+id/radA"
+                    android:id="@+id/radAPart5"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:checked="false"
@@ -70,7 +70,7 @@
                     android:text="Trả lời 1" />
 
                 <RadioButton
-                    android:id="@+id/radB"
+                    android:id="@+id/radBPart5"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:checked="false"
@@ -80,7 +80,7 @@
                     android:text="Trả lời 2" />
 
                 <RadioButton
-                    android:id="@+id/radC"
+                    android:id="@+id/radCPart5"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:checked="false"
@@ -90,7 +90,7 @@
                     android:text="Trả lời 3" />
 
                 <RadioButton
-                    android:id="@+id/radD"
+                    android:id="@+id/radDPart5"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:checked="false"

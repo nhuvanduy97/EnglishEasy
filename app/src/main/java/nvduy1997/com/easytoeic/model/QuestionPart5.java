@@ -6,19 +6,18 @@ import android.os.Parcelable;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class QuestionPart1 implements Parcelable {
-
+public class QuestionPart5 implements Parcelable {
     @SerializedName("idQuestion")
     @Expose
     private String idQuestion;
 
+    @SerializedName("noQuestion")
+    @Expose
+    private String noQuestion;
+
     @SerializedName("tenQuestion")
     @Expose
     private String tenQuestion;
-
-    @SerializedName("hinhQuestion")
-    @Expose
-    private String hinhQuestion;
 
     @SerializedName("daA")
     @Expose
@@ -50,50 +49,6 @@ public class QuestionPart1 implements Parcelable {
 
     public int choiceID = -1; // hỗ trợ check id của radiogroup
 
-    protected QuestionPart1(Parcel in) {
-        idQuestion = in.readString();
-        tenQuestion = in.readString();
-        hinhQuestion = in.readString();
-        daA = in.readString();
-        daB = in.readString();
-        daC = in.readString();
-        daD = in.readString();
-        resultQuestion = in.readString();
-        idTest = in.readString();
-        traLoi = in.readString();
-    }
-
-    public QuestionPart1() {
-
-    }
-
-    public QuestionPart1(String idQuestion, String tenQuestion, String hinhQuestion, String daA,
-                         String daB, String daC, String daD, String resultQuestion, String idTest,
-                         String traLoi) {
-        this.idQuestion = idQuestion;
-        this.tenQuestion = tenQuestion;
-        this.hinhQuestion = hinhQuestion;
-        this.daA = daA;
-        this.daB = daB;
-        this.daC = daC;
-        this.daD = daD;
-        this.resultQuestion = resultQuestion;
-        this.idTest = idTest;
-        this.traLoi = traLoi;
-    }
-
-    public static final Creator<QuestionPart1> CREATOR = new Creator<QuestionPart1>() {
-        @Override
-        public QuestionPart1 createFromParcel(Parcel in) {
-            return new QuestionPart1(in);
-        }
-
-        @Override
-        public QuestionPart1[] newArray(int size) {
-            return new QuestionPart1[size];
-        }
-    };
-
     public String getIdQuestion() {
         return idQuestion;
     }
@@ -102,20 +57,20 @@ public class QuestionPart1 implements Parcelable {
         this.idQuestion = idQuestion;
     }
 
+    public String getNoQuestion() {
+        return noQuestion;
+    }
+
+    public void setNoQuestion(String noQuestion) {
+        this.noQuestion = noQuestion;
+    }
+
     public String getTenQuestion() {
         return tenQuestion;
     }
 
     public void setTenQuestion(String tenQuestion) {
         this.tenQuestion = tenQuestion;
-    }
-
-    public String getHinhQuestion() {
-        return hinhQuestion;
-    }
-
-    public void setHinhQuestion(String hinhQuestion) {
-        this.hinhQuestion = hinhQuestion;
     }
 
     public String getDaA() {
@@ -174,6 +129,44 @@ public class QuestionPart1 implements Parcelable {
         this.traLoi = traLoi;
     }
 
+    public int getChoiceID() {
+        return choiceID;
+    }
+
+    public void setChoiceID(int choiceID) {
+        this.choiceID = choiceID;
+    }
+
+    public static Creator<QuestionPart5> getCREATOR() {
+        return CREATOR;
+    }
+
+    protected QuestionPart5(Parcel in) {
+        idQuestion = in.readString();
+        noQuestion = in.readString();
+        tenQuestion = in.readString();
+        daA = in.readString();
+        daB = in.readString();
+        daC = in.readString();
+        daD = in.readString();
+        resultQuestion = in.readString();
+        idTest = in.readString();
+        traLoi = in.readString();
+        choiceID = in.readInt();
+    }
+
+    public static final Creator<QuestionPart5> CREATOR = new Creator<QuestionPart5>() {
+        @Override
+        public QuestionPart5 createFromParcel(Parcel in) {
+            return new QuestionPart5(in);
+        }
+
+        @Override
+        public QuestionPart5[] newArray(int size) {
+            return new QuestionPart5[size];
+        }
+    };
+
     @Override
     public int describeContents() {
         return 0;
@@ -182,8 +175,8 @@ public class QuestionPart1 implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(idQuestion);
+        dest.writeString(noQuestion);
         dest.writeString(tenQuestion);
-        dest.writeString(hinhQuestion);
         dest.writeString(daA);
         dest.writeString(daB);
         dest.writeString(daC);
@@ -191,5 +184,6 @@ public class QuestionPart1 implements Parcelable {
         dest.writeString(resultQuestion);
         dest.writeString(idTest);
         dest.writeString(traLoi);
+        dest.writeInt(choiceID);
     }
 }

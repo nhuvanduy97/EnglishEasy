@@ -1,6 +1,5 @@
 package nvduy1997.com.easytoeic.fragment;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -10,11 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
-
 import nvduy1997.com.easytoeic.R;
 import nvduy1997.com.easytoeic.activity.MainActivity;
-import nvduy1997.com.easytoeic.model.TestPart5;
 
 public class ReadingFragment extends Fragment {
 
@@ -25,11 +21,11 @@ public class ReadingFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_reading, container, false);
         ((MainActivity) getActivity()).getSupportActionBar().setTitle("Reading");
-        anhxa();
+        initlizeComponents();
         return view;
     }
 
-    private void anhxa() {
+    private void initlizeComponents() {
         RelativeLayout relativeLayoutPart5 = view.findViewById(R.id.relativeLayout_Part5);
         relativeLayoutPart5.setOnClickListener(new View.OnClickListener() {
             @Override

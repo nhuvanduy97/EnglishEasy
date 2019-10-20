@@ -62,7 +62,6 @@ public class Part1SlideActivity extends FragmentActivity {
         setContentView(R.layout.activity_part1_slide);
 
         mPager = findViewById(R.id.viewPagerPart1);
-
         mPager.setPageTransformer(true, new DepthPageTransformer());
 
         initlizeComponents();
@@ -75,8 +74,6 @@ public class Part1SlideActivity extends FragmentActivity {
             idTest = testPart1.getIdTest();
             nameTest = testPart1.getTenTest();
         }
-
-        Log.d("PART11111", "onCreate: " + txtTest + " " + audio + " " + idTest + " " + nameTest);
 
         getData(idTest);
         eventClick();

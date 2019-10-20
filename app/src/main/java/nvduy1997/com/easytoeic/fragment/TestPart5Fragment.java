@@ -1,5 +1,6 @@
 package nvduy1997.com.easytoeic.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -14,12 +15,14 @@ import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import nvduy1997.com.easytoeic.R;
 import nvduy1997.com.easytoeic.activity.MainActivity;
+import nvduy1997.com.easytoeic.activity.Part5SlideActivity;
 import nvduy1997.com.easytoeic.adapter.TestPart5Adapter;
 import nvduy1997.com.easytoeic.model.TestPart5;
 import nvduy1997.com.easytoeic.server.APIService;
@@ -59,7 +62,7 @@ public class TestPart5Fragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable s) {
-                filter(s.toString());
+                //filter(s.toString());
             }
         });
 
@@ -73,12 +76,14 @@ public class TestPart5Fragment extends Fragment {
             @Override
             public void onResponse(Call<List<TestPart5>> call, Response<List<TestPart5>> response) {
                 testPart5ArrayList = (ArrayList<TestPart5>) response.body();
-                Log.d("Test part 5", "onResponse: Test part 5" +testPart5ArrayList.size());
                 testPart5Adapter = new TestPart5Adapter(getActivity(), R.layout.list_test_part5, testPart5ArrayList);
                 listView.setAdapter(testPart5Adapter);
                 listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        Intent intent = new Intent(getActivity(), Part5SlideActivity.class);
+                        intent.putExtra("testPart5", testPart5ArrayList.get(position));
+                        startActivity(intent);
 
                     }
                 });
@@ -91,7 +96,7 @@ public class TestPart5Fragment extends Fragment {
         });
     }
 
-    private void filter(String text) {
+    /*private void filter(String text) {
         ArrayList<TestPart5> filteredList = new ArrayList<>();
         for (TestPart5 item : testPart5ArrayList) {
             if (item.getTenTest().toLowerCase().contains(text.toLowerCase())) {
@@ -99,5 +104,5 @@ public class TestPart5Fragment extends Fragment {
             }
         }
         testPart5Adapter.filterList(filteredList);
-    }
+    }*/
 }

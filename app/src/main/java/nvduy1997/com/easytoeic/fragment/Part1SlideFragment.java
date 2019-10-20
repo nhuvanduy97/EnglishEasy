@@ -96,7 +96,7 @@ public class Part1SlideFragment extends Fragment {
             getCheckAns(arr_Question.get(mPageNumber).getResultQuestion().toString());
         }
 
-        radGroupPart1.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+        radGroupPart1.setOnCheckedChangeListener( new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 //Toast.makeText(getActivity(), "You choosed " + checkedId, Toast.LENGTH_SHORT).show();

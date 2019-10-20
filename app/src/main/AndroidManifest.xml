@@ -30,9 +30,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activity.QuestionActivity"
-            android:theme="@style/MyTheme" />
-        <activity
             android:name=".activity.VideoPlayActivity"
             android:screenOrientation="landscape" />
         <activity
@@ -43,8 +40,9 @@
             android:name=".activity.ScorePart1Activity"
             android:theme="@style/MyTheme" />
         <activity
-            android:name=".activity.Part1SlideActivity11"
+            android:name=".activity.Part5SlideActivity"
             android:theme="@style/MyTheme" />
+
 
         <provider
             android:name="com.facebook.FacebookContentProvider"

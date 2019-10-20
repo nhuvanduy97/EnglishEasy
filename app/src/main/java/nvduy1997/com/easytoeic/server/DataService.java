@@ -5,8 +5,8 @@ import java.util.List;
 
 import nvduy1997.com.easytoeic.model.DetailGrammar;
 import nvduy1997.com.easytoeic.model.Grammar;
-import nvduy1997.com.easytoeic.model.Question;
 import nvduy1997.com.easytoeic.model.QuestionPart1;
+import nvduy1997.com.easytoeic.model.QuestionPart5;
 import nvduy1997.com.easytoeic.model.TestPart1;
 import nvduy1997.com.easytoeic.model.TestPart5;
 import nvduy1997.com.easytoeic.model.TestPart6;
@@ -20,8 +20,6 @@ import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 public interface DataService {
-    @GET("allQuestion.php")
-    Call<List<Question>> getQuestionP5Test1();
 
     @GET("ChuDeTuVung.php")
     Call<List<TopicVocabulary>> getTopicVocabulary();
@@ -46,6 +44,10 @@ public interface DataService {
 
     @GET("allTestPart5.php")
     Call<List<TestPart5>> getTestPart5();
+
+    @FormUrlEncoded
+    @POST("QuestionPart5.php")
+    Call<List<QuestionPart5>> getQuestionPart5(@Field("idTest") String idTest);
 
     @GET("TestPart6.php")
     Call<List<TestPart6>> getTestPart6();

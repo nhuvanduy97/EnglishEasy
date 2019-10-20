@@ -27,17 +27,6 @@ public class DatabaseManager extends SQLiteOpenHelper {
     private String CREATE_TABLE = "CREATE TABLE Score(_id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT," +
         " part TEXT, date TEXT, score TEXT, correct TEXT, fails TEXT, notans TEXT)";
 
-//    private String sqlQuery = "CREATE TABLE " + TABLE_NAME + " (" +
-//            ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-//            NAME + " TEXT, " +
-//            PART + " TEXT, " +
-//            DATE + " TEXT, " +
-//            SCORE + " TEXT," +
-//            CORRECT + "TEXT," +
-//            FAIL + "TEXT," +
-//            NOTANS + "TEXT)";
-
-
     public DatabaseManager(Context context) {
         super(context, DATABASE_NAME, null, VERSION);
 
