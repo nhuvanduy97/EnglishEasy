@@ -45,6 +45,7 @@ public class QuestionPart5 implements Parcelable {
 
     @SerializedName("traLoi")
     @Expose
+
     private String traLoi = "";
 
     public int choiceID = -1; // hỗ trợ check id của radiogroup
@@ -185,5 +186,24 @@ public class QuestionPart5 implements Parcelable {
         dest.writeString(idTest);
         dest.writeString(traLoi);
         dest.writeInt(choiceID);
+    }
+
+    public QuestionPart5() {
+
+    }
+
+    public QuestionPart5(String idQuestion, String noQuestion, String tenQuestion, String daA,
+                         String daB, String daC, String daD, String resultQuestion, String idTest,
+                         String traLoi) {
+        this.idQuestion = idQuestion;
+        this.noQuestion = noQuestion;
+        this.tenQuestion = tenQuestion;
+        this.daA = daA;
+        this.daB = daB;
+        this.daC = daC;
+        this.daD = daD;
+        this.resultQuestion = resultQuestion;
+        this.idTest = idTest;
+        this.traLoi = traLoi;
     }
 }

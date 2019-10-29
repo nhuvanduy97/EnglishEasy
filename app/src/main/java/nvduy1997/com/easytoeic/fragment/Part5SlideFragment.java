@@ -1,5 +1,6 @@
 package nvduy1997.com.easytoeic.fragment;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -52,7 +53,6 @@ public class Part5SlideFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         arr_Ques = new ArrayList<QuestionPart5>();
-        Part5SlideActivity part5SlideActivity = (Part5SlideActivity) getActivity();
         if (getArguments() != null) {
             arr_Ques = getArguments().getParcelableArrayList(ARGUMENT_QUESTIONS_PART5);
             mPageNumber = getArguments().getInt(ARG_PAGE_PART5);
@@ -82,6 +82,51 @@ public class Part5SlideFragment extends Fragment {
         radCPart5.setText(arr_Ques.get(mPageNumber).getDaC());
         radDPart5.setText(arr_Ques.get(mPageNumber).getDaD());
 
+        if (checkAns != 0) {
+            radAPart5.setClickable(false);
+            radBPart5.setClickable(false);
+            radCPart5.setClickable(false);
+            radDPart5.setClickable(false);
+            getCheckAns(arr_Ques.get(mPageNumber).getResultQuestion().toString());
+        }
 
+        radGroupPart5.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                arr_Ques.get(mPageNumber).choiceID = checkedId;
+                arr_Ques.get(mPageNumber).setTraLoi(getChoiceFromID(checkedId));
+            }
+        });
     }
+
+    // Hàm kiểm tra câu đúng :
+
+    private void getCheckAns(String ans) {
+        if (ans.equals("A") == true) {
+            radAPart5.setBackgroundColor(Color.GREEN);
+        } else if (ans.equals("B") == true) {
+            radBPart5.setBackgroundColor(Color.GREEN);
+        } else if (ans.equals("C") == true) {
+            radCPart5.setBackgroundColor(Color.GREEN);
+        } else if (ans.equals("D") == true) {
+            radDPart5.setBackgroundColor(Color.GREEN);
+        } else ;
+    }
+
+    // Lấy giá trị của radioGroup chuyển thành đáp án A,B,C,D
+
+    private String getChoiceFromID(int ID) {
+        if (ID == R.id.radAPart5) {
+            return "A";
+        } else if (ID == R.id.radBPart5) {
+            return "B";
+        } else if (ID == R.id.radCPart5) {
+            return "C";
+        } else if (ID == R.id.radDPart5) {
+            return "D";
+        } else {
+            return "";
+        }
+    }
+
 }

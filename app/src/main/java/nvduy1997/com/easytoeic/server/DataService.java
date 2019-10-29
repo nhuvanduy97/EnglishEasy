@@ -6,8 +6,10 @@ import java.util.List;
 import nvduy1997.com.easytoeic.model.DetailGrammar;
 import nvduy1997.com.easytoeic.model.Grammar;
 import nvduy1997.com.easytoeic.model.QuestionPart1;
+import nvduy1997.com.easytoeic.model.QuestionPart3;
 import nvduy1997.com.easytoeic.model.QuestionPart5;
 import nvduy1997.com.easytoeic.model.TestPart1;
+import nvduy1997.com.easytoeic.model.TestPart3;
 import nvduy1997.com.easytoeic.model.TestPart5;
 import nvduy1997.com.easytoeic.model.TestPart6;
 import nvduy1997.com.easytoeic.model.TestPart7;
@@ -48,6 +50,13 @@ public interface DataService {
     @FormUrlEncoded
     @POST("QuestionPart5.php")
     Call<List<QuestionPart5>> getQuestionPart5(@Field("idTest") String idTest);
+
+    @GET("TestPart3.php")
+    Call<List<TestPart3>> getTestPart3();
+
+    @FormUrlEncoded
+    @POST("QuestionPart3.php")
+    Call<List<QuestionPart3>> getQuestionPart3(@Field("idTest") String idTest);
 
     @GET("TestPart6.php")
     Call<List<TestPart6>> getTestPart6();

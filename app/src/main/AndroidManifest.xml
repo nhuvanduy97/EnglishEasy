@@ -14,6 +14,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity
+            android:name=".activity.Part3SlideActivity"
+            android:theme="@style/MyTheme" />
+
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
@@ -40,9 +44,11 @@
             android:name=".activity.ScorePart1Activity"
             android:theme="@style/MyTheme" />
         <activity
+            android:name=".activity.ScorePart5Activity"
+            android:theme="@style/MyTheme" />
+        <activity
             android:name=".activity.Part5SlideActivity"
             android:theme="@style/MyTheme" />
-
 
         <provider
             android:name="com.facebook.FacebookContentProvider"
