@@ -1,6 +1,10 @@
 package nvduy1997.com.easytoeic.activity;
 
+import android.content.Intent;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
+import android.os.AsyncTask;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
@@ -14,11 +18,21 @@ import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.List;
 
 import nvduy1997.com.easytoeic.R;
+import nvduy1997.com.easytoeic.common.Utils;
 import nvduy1997.com.easytoeic.fragment.Part3SlideFragment;
 import nvduy1997.com.easytoeic.model.QuestionPart3;
+import nvduy1997.com.easytoeic.model.TestPart3;
+import nvduy1997.com.easytoeic.server.APIService;
+import nvduy1997.com.easytoeic.server.DataService;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class Part3SlideActivity extends FragmentActivity {
 
@@ -45,6 +59,18 @@ public class Part3SlideActivity extends FragmentActivity {
 
         initlizeComponents();
 
+        Intent intent = getIntent();
+        if (intent != null && intent.hasExtra("testPart3")) {
+            TestPart3 testPart3 = intent.getParcelableExtra("testPart3");
+            txtTestPart3.setText(testPart3.getTenTest());
+            audio = testPart3.getAudioTest();
+            idTest = testPart3.getIdTest();
+            nameTest = testPart3.getTenTest();
+        }
+
+        getData(idTest);
+
+
     }
 
     public void initlizeComponents() {
@@ -58,6 +84,85 @@ public class Part3SlideActivity extends FragmentActivity {
         btnPlayPart3 = findViewById(R.id.btnPlayPart3);
 
 
+    }
+
+    private void eventClick() {
+
+    }
+
+    class playAudioPart3 extends AsyncTask<String, Void, String> {
+
+        @Override
+        protected String doInBackground(String... strings) {
+            return strings[0];
+        }
+
+        @Override
+        protected void onPostExecute(final String s) {
+            super.onPostExecute(s);
+            try {
+                mediaPlayer = new MediaPlayer();
+                mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        // tránh vấn đề bất đồng bộ
+                        mediaPlayer.stop();
+                        mediaPlayer.reset();
+
+                    }
+                });
+
+                mediaPlayer.setDataSource(s);
+                mediaPlayer.prepare();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            mediaPlayer.start();
+            timeAudio();
+            updateTime();
+        }
+
+
+    }
+
+    private void timeAudio() {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(Utils.MM_SS);
+        txtEndTimePart3.setText(simpleDateFormat.format(mediaPlayer.getDuration()));
+        sbListeningPart3.setMax(mediaPlayer.getDuration());
+    }
+
+    public void updateTime() {
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (mediaPlayer != null) {
+                    sbListeningPart3.setProgress(mediaPlayer.getCurrentPosition());
+                    SimpleDateFormat simpleDateFormat = new SimpleDateFormat(Utils.MM_SS);
+                }
+
+            }
+        }, 300);
+    }
+
+
+    private void getData(String id) {
+        DataService dataService = APIService.getService();
+        Call<List<QuestionPart3>> callback = dataService.getQuestionPart3(id);
+        callback.enqueue(new Callback<List<QuestionPart3>>() {
+            @Override
+            public void onResponse(Call<List<QuestionPart3>> call, Response<List<QuestionPart3>> response) {
+                part3ArrayList = (ArrayList<QuestionPart3>) response.body();
+                pagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
+                mPager.setAdapter(pagerAdapter);
+            }
+
+            @Override
+            public void onFailure(Call<List<QuestionPart3>> call, Throwable t) {
+
+            }
+        });
     }
 
     private class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {

@@ -50,7 +50,11 @@ public class ListeningFragment extends Fragment {
         relativeLayout3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                TestPart3Fragment testPart3Fragment = new TestPart3Fragment();
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.fragment_container, testPart3Fragment);
+                transaction.addToBackStack(null);
+                transaction.commit();
             }
         });
 

@@ -17,7 +17,12 @@ public class TestPart3 implements Parcelable {
     @SerializedName("audioTest")
     @Expose
     private String audioTest;
+
+
     protected TestPart3(Parcel in) {
+        idTest = in.readString();
+        tenTest = in.readString();
+        audioTest = in.readString();
     }
 
     public static final Creator<TestPart3> CREATOR = new Creator<TestPart3>() {
@@ -39,6 +44,9 @@ public class TestPart3 implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(idTest);
+        dest.writeString(tenTest);
+        dest.writeString(audioTest);
     }
 
     public String getIdTest() {
