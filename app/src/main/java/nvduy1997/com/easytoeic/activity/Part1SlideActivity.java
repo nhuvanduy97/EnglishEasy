@@ -116,10 +116,6 @@ public class Part1SlideActivity extends FragmentActivity {
         });
     }
 
-    public ArrayList<QuestionPart1> returnData() {
-        return part1ArrayList;
-    }
-
     @Override
     public void onBackPressed() {
         if (mPager.getCurrentItem() == 0) {

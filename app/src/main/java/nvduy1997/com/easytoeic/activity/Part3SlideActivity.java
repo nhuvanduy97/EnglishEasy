@@ -1,5 +1,7 @@
 package nvduy1997.com.easytoeic.activity;
 
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
@@ -12,7 +14,13 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AlertDialog;
+import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.SeekBar;
@@ -24,6 +32,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import nvduy1997.com.easytoeic.R;
+import nvduy1997.com.easytoeic.adapter.CheckAnswerPart3Adapter;
 import nvduy1997.com.easytoeic.common.Utils;
 import nvduy1997.com.easytoeic.fragment.Part3SlideFragment;
 import nvduy1997.com.easytoeic.model.QuestionPart3;
@@ -36,7 +45,7 @@ import retrofit2.Response;
 
 public class Part3SlideActivity extends FragmentActivity {
 
-    private static final int NUM_PAGES = 10;
+    private static final int NUM_PAGES = 9;
     private ViewPager mPager;
     private PagerAdapter pagerAdapter;
     private TextView txtTestPart3, txtStartTimePart3, txtEndTimePart3, txtCheckPart3, txtScorePart3;
@@ -60,16 +69,17 @@ public class Part3SlideActivity extends FragmentActivity {
         initlizeComponents();
 
         Intent intent = getIntent();
-        if (intent != null && intent.hasExtra("testPart3")) {
+        if (intent.hasExtra("testPart3")) {
             TestPart3 testPart3 = intent.getParcelableExtra("testPart3");
-            txtTestPart3.setText(testPart3.getTenTest());
+            // txtTestPart3.setText(testPart3.getTenTest());
             audio = testPart3.getAudioTest();
             idTest = testPart3.getIdTest();
             nameTest = testPart3.getTenTest();
         }
 
         getData(idTest);
-
+        eventClick();
+        checkClick();
 
     }
 
@@ -83,11 +93,66 @@ public class Part3SlideActivity extends FragmentActivity {
         sbListeningPart3 = findViewById(R.id.sbListeningPart3);
         btnPlayPart3 = findViewById(R.id.btnPlayPart3);
 
+        imgReturnPart3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(Part3SlideActivity.this);
+                builder.setIcon(R.drawable.exit);
+                builder.setTitle("Notification");
+                builder.setMessage("Do you want to exit?");
+                builder.setNegativeButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish();
+                        mediaPlayer.stop();
+                    }
+                });
+
+                builder.setPositiveButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+                builder.show();
+
+            }
+        });
 
     }
 
     private void eventClick() {
+        new playAudioPart3().execute(audio);
+        btnPlayPart3.setImageResource(R.drawable.pausepart1);
+        btnPlayPart3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mediaPlayer.isPlaying()) {
+                    mediaPlayer.pause();
+                    btnPlayPart3.setImageResource(R.drawable.playpart1);
+                } else {
+                    mediaPlayer.start();
+                    btnPlayPart3.setImageResource(R.drawable.pausepart1);
+                }
+            }
+        });
 
+        sbListeningPart3.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                mediaPlayer.seekTo(sbListeningPart3.getProgress());
+            }
+        });
     }
 
     class playAudioPart3 extends AsyncTask<String, Void, String> {
@@ -140,10 +205,91 @@ public class Part3SlideActivity extends FragmentActivity {
                 if (mediaPlayer != null) {
                     sbListeningPart3.setProgress(mediaPlayer.getCurrentPosition());
                     SimpleDateFormat simpleDateFormat = new SimpleDateFormat(Utils.MM_SS);
+                    txtStartTimePart3.setText(simpleDateFormat.format(mediaPlayer.getCurrentPosition()));
+                    handler.postDelayed(this, 300);
+                    mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                        @Override
+                        public void onCompletion(MediaPlayer mp) {
+                            mediaPlayer.pause();
+                            btnPlayPart3.setImageResource(R.drawable.playpart1);
+                        }
+                    });
                 }
 
             }
         }, 300);
+    }
+
+    private void checkClick() {
+        txtCheckPart3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                checkAnswer();
+                mediaPlayer.pause();
+                btnPlayPart3.setImageResource(R.drawable.playpart1);
+            }
+        });
+    }
+
+    public void checkAnswer() {
+        final Dialog dialog = new Dialog(this);
+        dialog.setTitle("List Answers : ");
+        dialog.setContentView(R.layout.diglog_check_answer);
+
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        int height = (int) (displayMetrics.heightPixels * 0.5f);
+        int width = (int) (displayMetrics.widthPixels * 0.9f);
+
+        dialog.getWindow().setLayout(width, height);
+
+        Button btnCloseCheck, btnFinishCheck;
+
+        CheckAnswerPart3Adapter checkAnswerPart3Adapter = new CheckAnswerPart3Adapter(part3ArrayList, this);
+        Log.e("checkAnswer", "checkAnswer: " + part3ArrayList.size());
+        GridView gvCheckAns = dialog.findViewById(R.id.gvCheckAns);
+        gvCheckAns.setAdapter(checkAnswerPart3Adapter);
+
+        gvCheckAns.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                mPager.setCurrentItem(position);
+                dialog.dismiss();
+            }
+        });
+
+        btnCloseCheck = dialog.findViewById(R.id.btnCloseCheckPart1);
+        btnFinishCheck = dialog.findViewById(R.id.btnFinishCheckPart1);
+
+        btnCloseCheck.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+        btnFinishCheck.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                resultScore();
+                dialog.dismiss();
+
+
+            }
+        });
+        dialog.show();
+    }
+
+    public void resultScore() {
+        checkAns = 1;
+
+        if (mPager.getCurrentItem() >= 5) {
+            mPager.setCurrentItem(mPager.getCurrentItem() - 4);
+        } else if (mPager.getCurrentItem() <= 5) {
+            mPager.setCurrentItem(mPager.getCurrentItem() + 4);
+        }
+
+        txtScorePart3.setVisibility(View.VISIBLE);
+        txtCheckPart3.setVisibility(View.GONE);
     }
 
 

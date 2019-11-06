@@ -62,7 +62,7 @@ public class TestPart3Fragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable s) {
-                // filter(s.toString());
+                filter(s.toString());
             }
         });
 
