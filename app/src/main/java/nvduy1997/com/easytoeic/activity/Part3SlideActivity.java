@@ -48,7 +48,7 @@ public class Part3SlideActivity extends FragmentActivity {
     private static final int NUM_PAGES = 9;
     private ViewPager mPager;
     private PagerAdapter pagerAdapter;
-    private TextView txtTestPart3, txtStartTimePart3, txtEndTimePart3, txtCheckPart3, txtScorePart3;
+    private TextView txtPart3, txtStartTimePart3, txtEndTimePart3, txtCheckPart3, txtScorePart3;
     private ImageView imgReturnPart3;
     private SeekBar sbListeningPart3;
     private ImageButton btnPlayPart3;
@@ -71,7 +71,7 @@ public class Part3SlideActivity extends FragmentActivity {
         Intent intent = getIntent();
         if (intent.hasExtra("testPart3")) {
             TestPart3 testPart3 = intent.getParcelableExtra("testPart3");
-            // txtTestPart3.setText(testPart3.getTenTest());
+            txtPart3.setText(testPart3.getTenTest());
             audio = testPart3.getAudioTest();
             idTest = testPart3.getIdTest();
             nameTest = testPart3.getTenTest();
@@ -80,11 +80,11 @@ public class Part3SlideActivity extends FragmentActivity {
         getData(idTest);
         eventClick();
         checkClick();
-
+        showScore();
     }
 
     public void initlizeComponents() {
-        txtTestPart3 = findViewById(R.id.txtTestPart3);
+        txtPart3 = findViewById(R.id.txtPart3);
         txtStartTimePart3 = findViewById(R.id.txtStartTimePart3);
         txtEndTimePart3 = findViewById(R.id.txtEndTimePart3);
         txtCheckPart3 = findViewById(R.id.txtCheckPart3);
@@ -123,7 +123,8 @@ public class Part3SlideActivity extends FragmentActivity {
 
     private void eventClick() {
         new playAudioPart3().execute(audio);
-        btnPlayPart3.setImageResource(R.drawable.pausepart1);
+        btnPlayPart3.setImageResource(R.drawable.playpart1);
+
         btnPlayPart3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -184,6 +185,7 @@ public class Part3SlideActivity extends FragmentActivity {
                 e.printStackTrace();
             }
             mediaPlayer.start();
+            mediaPlayer.pause();
             timeAudio();
             updateTime();
         }
@@ -290,6 +292,19 @@ public class Part3SlideActivity extends FragmentActivity {
 
         txtScorePart3.setVisibility(View.VISIBLE);
         txtCheckPart3.setVisibility(View.GONE);
+    }
+
+    public void showScore() {
+        txtScorePart3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Part3SlideActivity.this, ScorePart3Activity.class);
+                intent.putExtra("arrQuess", part3ArrayList);
+                intent.putExtra("nameTest", nameTest);
+                startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+            }
+        });
     }
 
 

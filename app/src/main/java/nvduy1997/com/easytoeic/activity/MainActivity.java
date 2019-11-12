@@ -5,6 +5,7 @@ import android.app.Service;
 import android.content.Context;
 import android.content.DialogInterface;
 
+import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.wifi.WifiManager;
@@ -203,7 +204,10 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.login) {
 
-        } else if (id == R.id.share) {
+        } else if (id == R.id.setting) {
+            Intent intent = new Intent(this, SettingActivity.class);
+            startActivity(intent);
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 
         } else if (id == R.id.about_me) {
 

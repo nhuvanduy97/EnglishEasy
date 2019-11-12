@@ -83,7 +83,7 @@ public class Part1SlideActivity extends FragmentActivity {
 
     private void eventClick() {
         new playAudioPart1().execute(audio);
-        btnPlay.setImageResource(R.drawable.pausepart1);
+        btnPlay.setImageResource(R.drawable.playpart1);
         btnPlay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -255,6 +255,7 @@ public class Part1SlideActivity extends FragmentActivity {
                 e.printStackTrace();
             }
             mediaPlayer.start();
+            mediaPlayer.pause();
             timeAudio();
             updateTime();
         }

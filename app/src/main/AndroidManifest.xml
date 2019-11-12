@@ -15,6 +15,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".activity.SettingActivity"
+            android:theme="@style/MyTheme"></activity>
+        <activity
             android:name=".activity.Part3SlideActivity"
             android:theme="@style/MyTheme" />
 
@@ -48,6 +51,9 @@
             android:theme="@style/MyTheme" />
         <activity
             android:name=".activity.Part5SlideActivity"
+            android:theme="@style/MyTheme" />
+        <activity
+            android:name=".activity.ScorePart3Activity"
             android:theme="@style/MyTheme" />
 
         <provider
