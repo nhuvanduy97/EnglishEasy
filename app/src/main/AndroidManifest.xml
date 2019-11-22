@@ -15,9 +15,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".activity.SettingActivity"
-            android:theme="@style/MyTheme"></activity>
-        <activity
             android:name=".activity.Part3SlideActivity"
             android:theme="@style/MyTheme" />
 
@@ -60,6 +57,10 @@
             android:name="com.facebook.FacebookContentProvider"
             android:authorities="com.facebook.app.FacebookContentProvider1040203079520227"
             android:exported="true" />
+        <receiver android:name=".activity.AlarmReceiver" />
+        <service
+            android:name=".activity.MusicAlarm"
+            android:enabled="true" />
     </application>
 
 </manifest>

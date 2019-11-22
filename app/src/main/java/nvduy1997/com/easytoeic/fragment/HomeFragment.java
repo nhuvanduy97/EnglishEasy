@@ -56,7 +56,7 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_home, container, false);
-        ((MainActivity) getActivity()).getSupportActionBar().setTitle("ToeicTBD");
+        ((MainActivity) getActivity()).getSupportActionBar().setTitle("Toeic PTT");
 
         imgSplashHome = view.findViewById(R.id.imgSplashHome);
         imgTree = view.findViewById(R.id.imgTree);

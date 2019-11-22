@@ -29,6 +29,7 @@ import nvduy1997.com.easytoeic.fragment.HomeFragment;
 import nvduy1997.com.easytoeic.fragment.ListeningFragment;
 import nvduy1997.com.easytoeic.fragment.ReadingFragment;
 import nvduy1997.com.easytoeic.fragment.ScoreStatisticsFragment;
+import nvduy1997.com.easytoeic.fragment.SettingFragment;
 import nvduy1997.com.easytoeic.fragment.TopicVocabularyFragment;
 
 import nvduy1997.com.easytoeic.fragment.VOAFragment;
@@ -96,7 +97,11 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.action_settings) {
-            return true;
+            SettingFragment settingFragment = new SettingFragment();
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.fragment_container, settingFragment);
+            transaction.addToBackStack(null);
+            transaction.commit();
         }
 
         return super.onOptionsItemSelected(item);
@@ -205,9 +210,15 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.login) {
 
         } else if (id == R.id.setting) {
-            Intent intent = new Intent(this, SettingActivity.class);
+           /* Intent intent = new Intent(this, SettingActivity.class);
             startActivity(intent);
-            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);*/
+
+            SettingFragment settingFragment = new SettingFragment();
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.fragment_container, settingFragment);
+            transaction.addToBackStack(null);
+            transaction.commit();
 
         } else if (id == R.id.about_me) {
 
