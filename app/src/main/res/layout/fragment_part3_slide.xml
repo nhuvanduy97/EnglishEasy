@@ -6,7 +6,7 @@
 
     <!-- TODO: Update blank fragment layout -->
     <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/content"
+        android:id="@+id/contentPart3"
         android:layout_width="match_parent"
         android:layout_height="fill_parent">
         <LinearLayout
@@ -25,7 +25,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/tvNumPart5"
+                    android:id="@+id/tvNumPart3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -35,7 +35,7 @@
                     android:text="Câu 1" />
 
                 <TextView
-                    android:id="@+id/tvQuestionPart5"
+                    android:id="@+id/tvQuestionPart3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="20sp"
@@ -54,13 +54,13 @@
                 android:visibility="visible" />
 
             <RadioGroup
-                android:id="@+id/radGroupPart5"
+                android:id="@+id/radGroupPart3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingLeft="5dp">
 
                 <RadioButton
-                    android:id="@+id/radAPart5"
+                    android:id="@+id/radAPart3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:checked="false"
@@ -70,7 +70,7 @@
                     android:text="Trả lời 1" />
 
                 <RadioButton
-                    android:id="@+id/radBPart5"
+                    android:id="@+id/radBPart3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:checked="false"
@@ -80,7 +80,7 @@
                     android:text="Trả lời 2" />
 
                 <RadioButton
-                    android:id="@+id/radCPart5"
+                    android:id="@+id/radCPart3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:checked="false"
@@ -90,7 +90,7 @@
                     android:text="Trả lời 3" />
 
                 <RadioButton
-                    android:id="@+id/radDPart5"
+                    android:id="@+id/radDPart3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:checked="false"

@@ -29,21 +29,20 @@ import java.util.Calendar;
 
 import nvduy1997.com.easytoeic.R;
 import nvduy1997.com.easytoeic.manager.DatabaseManager;
-import nvduy1997.com.easytoeic.model.QuestionPart1;
+import nvduy1997.com.easytoeic.model.QuestionPart3;
 import nvduy1997.com.easytoeic.model.Score;
 
-public class ScorePart1Activity extends AppCompatActivity {
-
+public class ScorePart3Activity extends AppCompatActivity {
     private Button btnAgain, btnSaveScore;
     private ImageView imgReturnScore, imgShare;
     private TextView txtTrue, txtFalse, txtNotAns, txtTotal;
-    ArrayList<QuestionPart1> arr_QuesBegin = new ArrayList<>();
+    ArrayList<QuestionPart3> arr_QuesBegin = new ArrayList<>();
     private String nameTest, date;
     int numNotAns = 0;
     int numTrue = 0;
     int numFalse = 0;
     int totalScore;
-    private DatabaseManager databaseManager = new DatabaseManager(ScorePart1Activity.this);
+    private DatabaseManager databaseManager = new DatabaseManager(ScorePart3Activity.this);
     private CallbackManager callbackManager;
     private ShareDialog shareDialog;
 
@@ -87,7 +86,7 @@ public class ScorePart1Activity extends AppCompatActivity {
         btnSaveScore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(ScorePart1Activity.this);
+                AlertDialog.Builder builder = new AlertDialog.Builder(ScorePart3Activity.this);
                 builder.setTitle("Notification");
                 builder.setIcon(R.drawable.document);
                 builder.setMessage("Do you want to save score?");
@@ -96,10 +95,10 @@ public class ScorePart1Activity extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         Calendar calendar = Calendar.getInstance();
                         date = DateFormat.getDateInstance(DateFormat.FULL).format(calendar.getTime());
-                        Score score = new Score(nameTest, "Part1", date, totalScore, numTrue, numFalse, numNotAns);
+                        Score score = new Score(nameTest, "Part3", date, totalScore, numTrue, numFalse, numNotAns);
                         databaseManager.addScore(score);
 
-                        Toast.makeText(ScorePart1Activity.this, "Save Score Successfull", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ScorePart3Activity.this, "Save Score Successfull", Toast.LENGTH_SHORT).show();
                     }
                 });
 
@@ -122,7 +121,7 @@ public class ScorePart1Activity extends AppCompatActivity {
     }
 
     private void showMenu() {
-        PopupMenu popupMenu = new PopupMenu(ScorePart1Activity.this, imgShare);
+        PopupMenu popupMenu = new PopupMenu(ScorePart3Activity.this, imgShare);
         popupMenu.getMenuInflater().inflate(R.menu.share_menu, popupMenu.getMenu());
         popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
             @Override
@@ -169,22 +168,22 @@ public class ScorePart1Activity extends AppCompatActivity {
         shareDialog.registerCallback(callbackManager, new FacebookCallback<Sharer.Result>() {
                     @Override
                     public void onSuccess(Sharer.Result result) {
-                        Toast.makeText(ScorePart1Activity.this, "Share Successfull", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ScorePart3Activity.this, "Share Successfull", Toast.LENGTH_SHORT).show();
                     }
 
                     @Override
                     public void onCancel() {
-                        Toast.makeText(ScorePart1Activity.this, "Share Cancel", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ScorePart3Activity.this, "Share Cancel", Toast.LENGTH_SHORT).show();
                     }
 
                     @Override
                     public void onError(FacebookException error) {
-                        Toast.makeText(ScorePart1Activity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ScorePart3Activity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 }
         );
         ShareLinkContent shareLinkContent = new ShareLinkContent.Builder()
-                .setQuote("This is App Toeic TBD - " + nameTest + " - Part1 - Score : " + totalScore)
+                .setQuote("This is App Toeic TBD - " + nameTest + " - Part3 - Score : " + totalScore)
                 .setContentUrl(Uri.parse("https://www.youtube.com/watch?v=TRm4ge-P0As"))
                 .build();
 
@@ -197,10 +196,7 @@ public class ScorePart1Activity extends AppCompatActivity {
     public void shareGoogle() {
         Intent intent = new Intent(Intent.ACTION_SEND);
         intent.setType("text/plain");
-        intent.putExtra(Intent.EXTRA_TEXT, "Part1 - " + nameTest + " - " + date + " - Total Score : " + totalScore);
+        intent.putExtra(Intent.EXTRA_TEXT, "Part3 - " + nameTest + " - " + date + " - Total Score : " + totalScore);
         startActivity(Intent.createChooser(intent, "Share with"));
     }
-
-
 }
-

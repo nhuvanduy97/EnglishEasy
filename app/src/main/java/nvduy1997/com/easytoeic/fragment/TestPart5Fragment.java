@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,41 +15,41 @@ import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import nvduy1997.com.easytoeic.R;
 import nvduy1997.com.easytoeic.activity.MainActivity;
-import nvduy1997.com.easytoeic.activity.Part1SlideActivity;
-import nvduy1997.com.easytoeic.adapter.TestPart1Adapter;
-import nvduy1997.com.easytoeic.model.TestPart1;
+import nvduy1997.com.easytoeic.activity.Part5SlideActivity;
+import nvduy1997.com.easytoeic.adapter.TestPart5Adapter;
+import nvduy1997.com.easytoeic.model.TestPart5;
 import nvduy1997.com.easytoeic.server.APIService;
 import nvduy1997.com.easytoeic.server.DataService;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class TestPart1Fragment extends Fragment {
-
+public class TestPart5Fragment extends Fragment {
     private ListView listView;
-    private TestPart1Adapter testPart1Adapter;
-    private ArrayList<TestPart1> testPart1ArrayList;
-    private ImageView btnSearchTestPart1;
-    private EditText edtSearchTestPart1;
+    private TestPart5Adapter testPart5Adapter;
+    private ArrayList<TestPart5> testPart5ArrayList;
+    private ImageView btnSearchTestPart5;
+    private EditText edtSearchTestPart5;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_test_part1, container, false);
-        ((MainActivity) getActivity()).getSupportActionBar().setTitle("Part 1");
-        listView = view.findViewById(R.id.lvTestPart1);
-        testPart1ArrayList = new ArrayList<>();
+        View view = inflater.inflate(R.layout.fragment_test_part5, container, false);
+        ((MainActivity) getActivity()).getSupportActionBar().setTitle("Part 5");
+        listView = view.findViewById(R.id.lvTestPart5);
+        testPart5ArrayList = new ArrayList<>();
         getData();
 
-        btnSearchTestPart1 = view.findViewById(R.id.btnVoiceTestPart1);
-        edtSearchTestPart1 = view.findViewById(R.id.edtSearchTestPart1);
-        edtSearchTestPart1.addTextChangedListener(new TextWatcher() {
+        btnSearchTestPart5 = view.findViewById(R.id.btnVoiceTestPart5);
+        edtSearchTestPart5 = view.findViewById(R.id.edtSearchTestPart5);
+        edtSearchTestPart5.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -61,7 +62,7 @@ public class TestPart1Fragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable s) {
-                filter(s.toString());
+                //filter(s.toString());
             }
         });
 
@@ -70,37 +71,38 @@ public class TestPart1Fragment extends Fragment {
 
     private void getData() {
         DataService dataService = APIService.getService();
-        Call<List<TestPart1>> callback = dataService.getTestPart1();
-        callback.enqueue(new Callback<List<TestPart1>>() {
+        Call<List<TestPart5>> callback = dataService.getTestPart5();
+        callback.enqueue(new Callback<List<TestPart5>>() {
             @Override
-            public void onResponse(Call<List<TestPart1>> call, Response<List<TestPart1>> response) {
-                testPart1ArrayList = (ArrayList<TestPart1>) response.body();
-                testPart1Adapter = new TestPart1Adapter(getActivity(), R.layout.list_test_part1, testPart1ArrayList);
-                listView.setAdapter(testPart1Adapter);
+            public void onResponse(Call<List<TestPart5>> call, Response<List<TestPart5>> response) {
+                testPart5ArrayList = (ArrayList<TestPart5>) response.body();
+                testPart5Adapter = new TestPart5Adapter(getActivity(), R.layout.list_test_part5, testPart5ArrayList);
+                listView.setAdapter(testPart5Adapter);
                 listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        Intent intent = new Intent(getActivity(), Part1SlideActivity.class);
-                        intent.putExtra("testPart1", testPart1ArrayList.get(position));
+                        Intent intent = new Intent(getActivity(), Part5SlideActivity.class);
+                        intent.putExtra("testPart5", testPart5ArrayList.get(position));
                         startActivity(intent);
+
                     }
                 });
             }
 
             @Override
-            public void onFailure(Call<List<TestPart1>> call, Throwable t) {
+            public void onFailure(Call<List<TestPart5>> call, Throwable t) {
 
             }
         });
     }
 
-    private void filter(String text) {
-        ArrayList<TestPart1> filteredList = new ArrayList<>();
-        for (TestPart1 item : testPart1ArrayList) {
+    /*private void filter(String text) {
+        ArrayList<TestPart5> filteredList = new ArrayList<>();
+        for (TestPart5 item : testPart5ArrayList) {
             if (item.getTenTest().toLowerCase().contains(text.toLowerCase())) {
                 filteredList.add(item);
             }
         }
-        testPart1Adapter.filterList(filteredList);
-    }
+        testPart5Adapter.filterList(filteredList);
+    }*/
 }

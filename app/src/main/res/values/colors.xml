@@ -5,4 +5,5 @@
     <color name="colorAccent">#D81B60</color>
     <color name="colorSwitch">#466abc</color>
     <color name="colorSplash">#022AD9</color>
+    <color name="colorTimePicker">#7027B0</color>
 </resources>

@@ -6,8 +6,7 @@ import android.os.Parcelable;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class QuestionPart1 implements Parcelable {
-
+public class QuestionPart3 implements Parcelable {
     @SerializedName("idQuestion")
     @Expose
     private String idQuestion;
@@ -15,10 +14,6 @@ public class QuestionPart1 implements Parcelable {
     @SerializedName("tenQuestion")
     @Expose
     private String tenQuestion;
-
-    @SerializedName("hinhQuestion")
-    @Expose
-    private String hinhQuestion;
 
     @SerializedName("daA")
     @Expose
@@ -46,14 +41,14 @@ public class QuestionPart1 implements Parcelable {
 
     @SerializedName("traLoi")
     @Expose
+
     private String traLoi = "";
 
     public int choiceID = -1; // hỗ trợ check id của radiogroup
 
-    protected QuestionPart1(Parcel in) {
+    protected QuestionPart3(Parcel in) {
         idQuestion = in.readString();
         tenQuestion = in.readString();
-        hinhQuestion = in.readString();
         daA = in.readString();
         daB = in.readString();
         daC = in.readString();
@@ -61,38 +56,39 @@ public class QuestionPart1 implements Parcelable {
         resultQuestion = in.readString();
         idTest = in.readString();
         traLoi = in.readString();
+        choiceID = in.readInt();
     }
 
-    public QuestionPart1() {
-
-    }
-
-    public QuestionPart1(String idQuestion, String tenQuestion, String hinhQuestion, String daA,
-                         String daB, String daC, String daD, String resultQuestion, String idTest,
-                         String traLoi) {
-        this.idQuestion = idQuestion;
-        this.tenQuestion = tenQuestion;
-        this.hinhQuestion = hinhQuestion;
-        this.daA = daA;
-        this.daB = daB;
-        this.daC = daC;
-        this.daD = daD;
-        this.resultQuestion = resultQuestion;
-        this.idTest = idTest;
-        this.traLoi = traLoi;
-    }
-
-    public static final Creator<QuestionPart1> CREATOR = new Creator<QuestionPart1>() {
+    public static final Creator<QuestionPart3> CREATOR = new Creator<QuestionPart3>() {
         @Override
-        public QuestionPart1 createFromParcel(Parcel in) {
-            return new QuestionPart1(in);
+        public QuestionPart3 createFromParcel(Parcel in) {
+            return new QuestionPart3(in);
         }
 
         @Override
-        public QuestionPart1[] newArray(int size) {
-            return new QuestionPart1[size];
+        public QuestionPart3[] newArray(int size) {
+            return new QuestionPart3[size];
         }
     };
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(idQuestion);
+        dest.writeString(tenQuestion);
+        dest.writeString(daA);
+        dest.writeString(daB);
+        dest.writeString(daC);
+        dest.writeString(daD);
+        dest.writeString(resultQuestion);
+        dest.writeString(idTest);
+        dest.writeString(traLoi);
+        dest.writeInt(choiceID);
+    }
 
     public String getIdQuestion() {
         return idQuestion;
@@ -108,14 +104,6 @@ public class QuestionPart1 implements Parcelable {
 
     public void setTenQuestion(String tenQuestion) {
         this.tenQuestion = tenQuestion;
-    }
-
-    public String getHinhQuestion() {
-        return hinhQuestion;
-    }
-
-    public void setHinhQuestion(String hinhQuestion) {
-        this.hinhQuestion = hinhQuestion;
     }
 
     public String getDaA() {
@@ -174,22 +162,11 @@ public class QuestionPart1 implements Parcelable {
         this.traLoi = traLoi;
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
+    public int getChoiceID() {
+        return choiceID;
     }
 
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(idQuestion);
-        dest.writeString(tenQuestion);
-        dest.writeString(hinhQuestion);
-        dest.writeString(daA);
-        dest.writeString(daB);
-        dest.writeString(daC);
-        dest.writeString(daD);
-        dest.writeString(resultQuestion);
-        dest.writeString(idTest);
-        dest.writeString(traLoi);
+    public void setChoiceID(int choiceID) {
+        this.choiceID = choiceID;
     }
 }

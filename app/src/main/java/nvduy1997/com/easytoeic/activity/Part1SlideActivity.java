@@ -62,7 +62,6 @@ public class Part1SlideActivity extends FragmentActivity {
         setContentView(R.layout.activity_part1_slide);
 
         mPager = findViewById(R.id.viewPagerPart1);
-
         mPager.setPageTransformer(true, new DepthPageTransformer());
 
         initlizeComponents();
@@ -76,8 +75,6 @@ public class Part1SlideActivity extends FragmentActivity {
             nameTest = testPart1.getTenTest();
         }
 
-        Log.d("PART11111", "onCreate: " + txtTest + " " + audio + " " + idTest + " " + nameTest);
-
         getData(idTest);
         eventClick();
         checkClick();
@@ -86,7 +83,7 @@ public class Part1SlideActivity extends FragmentActivity {
 
     private void eventClick() {
         new playAudioPart1().execute(audio);
-        btnPlay.setImageResource(R.drawable.pausepart1);
+        btnPlay.setImageResource(R.drawable.playpart1);
         btnPlay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -117,10 +114,6 @@ public class Part1SlideActivity extends FragmentActivity {
 
             }
         });
-    }
-
-    public ArrayList<QuestionPart1> returnData() {
-        return part1ArrayList;
     }
 
     @Override
@@ -262,6 +255,7 @@ public class Part1SlideActivity extends FragmentActivity {
                 e.printStackTrace();
             }
             mediaPlayer.start();
+            mediaPlayer.pause();
             timeAudio();
             updateTime();
         }

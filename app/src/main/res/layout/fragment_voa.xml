@@ -4,28 +4,37 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-    <EditText
-        android:layout_marginLeft="8dp"
-        android:hint="   search video"
-        android:background="@drawable/custom_search"
-        android:id="@+id/edtSearchVideo"
-        android:layout_width="365dp"
-        android:layout_height="42dp" />
 
-    <ImageButton
-        android:id="@+id/btnVoiceYoutube"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:layout_marginTop="6dp"
-        android:layout_toRightOf="@+id/edtSearchVideo"
-        android:background="@drawable/ic_speaking" />
+    <LinearLayout
+        android:id="@+id/lnVOA"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/edtSearchVideo"
+            android:layout_width="0dp"
+            android:layout_height="42dp"
+            android:layout_marginLeft="8dp"
+            android:layout_weight="8"
+            android:background="@drawable/custom_search"
+            android:hint="   search video" />
+
+        <ImageButton
+            android:id="@+id/btnVoiceYoutube"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginTop="6dp"
+            android:layout_toRightOf="@+id/edtSearchVideo"
+            android:background="@drawable/ic_speaking" />
+
+    </LinearLayout>
 
     <ListView
-        android:dividerHeight="4dp"
         android:id="@+id/lvVideo"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/edtSearchVideo">
+        android:layout_below="@+id/lnVOA"
+        android:dividerHeight="4dp">
 
     </ListView>
 </RelativeLayout>

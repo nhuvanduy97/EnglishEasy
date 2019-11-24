@@ -10,14 +10,13 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import nvduy1997.com.easytoeic.R;
-import nvduy1997.com.easytoeic.model.QuestionPart5;
+import nvduy1997.com.easytoeic.model.QuestionPart3;
 
-public class CheckAnswerPart5Adapter extends BaseAdapter {
-
+public class CheckAnswerPart3Adapter extends BaseAdapter {
     ArrayList lsData;
     LayoutInflater layoutInflater;
 
-    public CheckAnswerPart5Adapter(ArrayList lsData, Context context) {
+    public CheckAnswerPart3Adapter(ArrayList lsData, Context context) {
         this.lsData = lsData;
         layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
@@ -40,7 +39,7 @@ public class CheckAnswerPart5Adapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        QuestionPart5 data = (QuestionPart5) getItem(position);
+        QuestionPart3 data = (QuestionPart3) getItem(position);
 
         ViewHolder holder;
         if (convertView == null) {
@@ -52,7 +51,6 @@ public class CheckAnswerPart5Adapter extends BaseAdapter {
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-
         int i = position + 1; // text câu hỏi
         holder.txtNumAns.setText(i + " : ");
         holder.txtAns.setText(data.getTraLoi());

@@ -56,7 +56,6 @@ public class Part1SlideFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         arr_Question = new ArrayList<>();
-        Part1SlideActivity part1SlideActivity = (Part1SlideActivity) getActivity();
         if (getArguments() != null) {
             arr_Question = getArguments().getParcelableArrayList(ARGUMENT_QUESTIONS);
             mPageNumber = getArguments().getInt(ARG_PAGE);
@@ -96,10 +95,10 @@ public class Part1SlideFragment extends Fragment {
             getCheckAns(arr_Question.get(mPageNumber).getResultQuestion().toString());
         }
 
-        radGroupPart1.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+        radGroupPart1.setOnCheckedChangeListener( new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                //Toast.makeText(getActivity(), "You choosed " + checkedId, Toast.LENGTH_SHORT).show();
+
                 arr_Question.get(mPageNumber).choiceID = checkedId;
                 arr_Question.get(mPageNumber).setTraLoi(getChoiceFromID(checkedId));
             }

@@ -11,12 +11,12 @@
     <ImageView
         android:scaleType="fitXY"
         android:src="@drawable/headphone"
-        android:id="@+id/imgTestPart1"
+        android:id="@+id/imgTestPart3"
         android:layout_width="80dp"
         android:layout_height="80dp" />
     <TextView
         android:layout_marginLeft="16dp"
-        android:id="@+id/txtTestPart1"
+        android:id="@+id/txtTestPart3"
         android:textStyle="bold"
         android:layout_marginTop="18dp"
         android:padding="8dp"
@@ -26,7 +26,7 @@
         android:layout_height="wrap_content" />
     <ImageView
         android:src="@drawable/down"
-        android:id="@+id/imgDowloadTestPart1"
+        android:id="@+id/imgDowloadTestPart3"
         android:layout_marginTop="28dp"
         android:layout_width="24dp"
         android:layout_height="24dp" />
