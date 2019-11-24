@@ -58,9 +58,6 @@
             android:authorities="com.facebook.app.FacebookContentProvider1040203079520227"
             android:exported="true" />
         <receiver android:name=".activity.AlarmReceiver" />
-        <service
-            android:name=".activity.MusicAlarm"
-            android:enabled="true" />
     </application>
 
 </manifest>

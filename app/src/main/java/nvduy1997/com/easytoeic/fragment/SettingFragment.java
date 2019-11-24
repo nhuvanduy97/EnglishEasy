@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.Switch;
@@ -33,6 +34,7 @@ public class SettingFragment extends Fragment {
     private Button btnTimeReminder;
     private AlarmManager alarmManager;
     private PendingIntent pendingIntent;
+    private CheckBox cbTimeReminder;
 
 
     @Nullable
@@ -44,6 +46,7 @@ public class SettingFragment extends Fragment {
         lnReminder = view.findViewById(R.id.lnTimeReminder);
         tpTimeReminder = view.findViewById(R.id.tpTimeReminder);
         btnTimeReminder = view.findViewById(R.id.btnTimeReminder);
+        cbTimeReminder = view.findViewById(R.id.cbTimeReminder);
 
         swReminder.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -56,11 +59,13 @@ public class SettingFragment extends Fragment {
                             alarmClock();
                             String time = tpTimeReminder.getHour() + ":" + tpTimeReminder.getMinute();
                             Toast.makeText(getActivity(), "Bạn đã đặt lời nhắc vào " + time, Toast.LENGTH_SHORT).show();
+
                         }
                     });
 
                 } else {
                     lnReminder.setVisibility(View.GONE);
+                    pendingIntent.cancel();
                 }
             }
         });
@@ -81,6 +86,10 @@ public class SettingFragment extends Fragment {
         Intent intent = new Intent(getActivity(), AlarmReceiver.class);
         pendingIntent = PendingIntent.getBroadcast(getActivity(), 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
         alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
+
+        if (cbTimeReminder.isChecked()) {
+            alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
+        }
     }
 
 }
