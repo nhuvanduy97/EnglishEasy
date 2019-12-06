@@ -8,6 +8,7 @@ import nvduy1997.com.easytoeic.model.Grammar;
 import nvduy1997.com.easytoeic.model.QuestionPart1;
 import nvduy1997.com.easytoeic.model.QuestionPart3;
 import nvduy1997.com.easytoeic.model.QuestionPart5;
+import nvduy1997.com.easytoeic.model.QuestionPart7;
 import nvduy1997.com.easytoeic.model.TestPart1;
 import nvduy1997.com.easytoeic.model.TestPart3;
 import nvduy1997.com.easytoeic.model.TestPart5;
@@ -63,6 +64,10 @@ public interface DataService {
 
     @GET("TestPart7.php")
     Call<List<TestPart7>> getTestPart7();
+
+    @FormUrlEncoded
+    @POST("QuestionPart7.php")
+    Call<List<QuestionPart7>> getQuestionPart7(@Field("idTest") String idTest);
 
 
 }

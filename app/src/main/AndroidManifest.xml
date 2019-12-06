@@ -52,6 +52,9 @@
         <activity
             android:name=".activity.ScorePart3Activity"
             android:theme="@style/MyTheme" />
+        <activity
+            android:name=".activity.Part7SlideActivity"
+            android:theme="@style/MyTheme" />
 
         <provider
             android:name="com.facebook.FacebookContentProvider"

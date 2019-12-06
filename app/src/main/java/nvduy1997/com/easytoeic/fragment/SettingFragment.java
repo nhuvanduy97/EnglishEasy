@@ -65,7 +65,6 @@ public class SettingFragment extends Fragment {
 
                 } else {
                     lnReminder.setVisibility(View.GONE);
-                    pendingIntent.cancel();
                 }
             }
         });

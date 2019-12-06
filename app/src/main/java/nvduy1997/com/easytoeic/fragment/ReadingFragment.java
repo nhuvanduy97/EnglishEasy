@@ -50,7 +50,11 @@ public class ReadingFragment extends Fragment {
         relativeLayoutPart7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                TestPart7Fragment testPart7Fragment = new TestPart7Fragment();
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.fragment_container, testPart7Fragment);
+                transaction.addToBackStack(null);
+                transaction.commit();
             }
         });
     }
