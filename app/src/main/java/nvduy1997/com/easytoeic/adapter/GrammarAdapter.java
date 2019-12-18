@@ -17,16 +17,19 @@ import java.util.ArrayList;
 
 import nvduy1997.com.easytoeic.R;
 import nvduy1997.com.easytoeic.model.Grammar;
+import nvduy1997.com.easytoeic.model.TopicVocabulary;
 
 
 public class GrammarAdapter extends BaseAdapter {
 
-    private ArrayList<Grammar> grammars;
     private Context context;
+    private int layout;
+    private ArrayList<Grammar> grammars;
 
-    public GrammarAdapter(ArrayList<Grammar> grammars, Context context) {
-        this.grammars = grammars;
+    public GrammarAdapter(Context context, int layout, ArrayList<Grammar> grammars) {
         this.context = context;
+        this.layout = layout;
+        this.grammars = grammars;
     }
 
     @Override
@@ -44,7 +47,7 @@ public class GrammarAdapter extends BaseAdapter {
         return position;
     }
 
-    public class ViewHolder{
+    public class ViewHolder {
         ImageView idImgViewGrammar;
         TextView textViewBai;
         TextView textViewGrammar;
@@ -53,21 +56,20 @@ public class GrammarAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder viewHolder;
-        if (convertView == null){
+        if (convertView == null) {
             viewHolder = new ViewHolder();
             LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = layoutInflater.inflate(R.layout.dong_grammar,null);
+            convertView = layoutInflater.inflate(layout, null);
             viewHolder.idImgViewGrammar = convertView.findViewById(R.id.idImgViewGrammar);
             viewHolder.textViewBai = convertView.findViewById(R.id.textViewBai);
             viewHolder.textViewGrammar = convertView.findViewById(R.id.textViewGrammar);
             convertView.setTag(viewHolder);
-        }
-        else {
+        } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
         Grammar grammar = grammars.get(position);
-      //  viewHolder.textViewBai.setText(grammar.getId());
-      //  viewHolder.textViewGrammar.setText(grammar.getTen());
+        viewHolder.textViewBai.setText(grammar.getId());
+        viewHolder.textViewGrammar.setText(grammar.getTen());
         Picasso.with(context).load(grammar.getHinhAnh()).into(viewHolder.idImgViewGrammar);
 
 
@@ -75,5 +77,10 @@ public class GrammarAdapter extends BaseAdapter {
         convertView.startAnimation(animation);
 
         return convertView;
+    }
+
+    public void filterList(ArrayList<Grammar> filteredList) {
+        grammars = filteredList;
+        notifyDataSetChanged();
     }
 }

@@ -16,6 +16,7 @@ import java.util.List;
 import nvduy1997.com.easytoeic.R;
 import nvduy1997.com.easytoeic.activity.MainActivity;
 import nvduy1997.com.easytoeic.adapter.DetailGrammarAdapter;
+import nvduy1997.com.easytoeic.adapter.GrammarAdapter;
 import nvduy1997.com.easytoeic.model.DetailGrammar;
 import nvduy1997.com.easytoeic.server.APIService;
 import nvduy1997.com.easytoeic.server.DataService;
@@ -29,16 +30,7 @@ public class DetailGrammarFragment extends Fragment {
     private ArrayList<DetailGrammar> detailGrammarArrayList;
     private ListView listViewDetail;
     private DetailGrammarAdapter adapter;
-    private int idGrammar;
-
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        Bundle bundle = getArguments();
-        if (bundle != null) {
-            idGrammar = bundle.getInt("KEY");
-        }
-    }
+    private String idGrammar;
 
     @Nullable
     @Override
@@ -46,7 +38,13 @@ public class DetailGrammarFragment extends Fragment {
         view = inflater.inflate(R.layout.fragment_detail_grammar, container, false);
         ((MainActivity) getActivity()).getSupportActionBar().setTitle("Grammar");
         listViewDetail = view.findViewById(R.id.ListViewDetail);
-        getDetailGrammar(String.valueOf(idGrammar));
+
+        Bundle bundle = getArguments();
+        if (bundle != null) {
+            idGrammar = bundle.getString("idgrammar");
+            getDetailGrammar(String.valueOf(idGrammar));
+        }
+
         return view;
     }
 
@@ -57,7 +55,7 @@ public class DetailGrammarFragment extends Fragment {
             @Override
             public void onResponse(Call<List<DetailGrammar>> call, Response<List<DetailGrammar>> response) {
                 detailGrammarArrayList = (ArrayList<DetailGrammar>) response.body();
-                adapter = new DetailGrammarAdapter(detailGrammarArrayList, getContext());
+                adapter = new DetailGrammarAdapter(detailGrammarArrayList,getActivity());
                 listViewDetail.setAdapter(adapter);
             }
 

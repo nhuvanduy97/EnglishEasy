@@ -36,7 +36,6 @@ import nvduy1997.com.easytoeic.fragment.VOAFragment;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener
-        , GrammarFragment.OpenFragmentDetail
         , HomeFragment.OpenRead
         , HomeFragment.OpenDic
         , HomeFragment.OpenVOA
@@ -170,11 +169,7 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.grammar_english) {
             if (isConnected()) {
-                GrammarFragment grammarFragment = new GrammarFragment();
-                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.fragment_container, grammarFragment);
-                transaction.addToBackStack(null);
-                transaction.commit();
+                openGrammar();
             } else {
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
                 builder.setIcon(R.drawable.nowifi);
@@ -210,10 +205,6 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.login) {
 
         } else if (id == R.id.setting) {
-           /* Intent intent = new Intent(this, SettingActivity.class);
-            startActivity(intent);
-            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);*/
-
             SettingFragment settingFragment = new SettingFragment();
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
             transaction.replace(R.id.fragment_container, settingFragment);
@@ -234,18 +225,6 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
-    }
-
-    @Override
-    public void Open(int id) {
-        DetailGrammarFragment detailGrammarFragment = new DetailGrammarFragment();
-        Bundle bundle = new Bundle();
-        bundle.putInt("KEY", id);
-        detailGrammarFragment.setArguments(bundle);
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.fragment_container, detailGrammarFragment);
-        transaction.addToBackStack(null);
-        transaction.commit();
     }
 
     @Override

@@ -8,22 +8,22 @@ import com.google.gson.annotations.SerializedName;
 
 public class DetailGrammar implements Parcelable {
 
-    @SerializedName("Id")
+    @SerializedName("id")
     @Expose
     private String id;
-    @SerializedName("Cachsh")
+    @SerializedName("cachsh")
     @Expose
     private String cachsh;
-    @SerializedName("Dinhnghia")
+    @SerializedName("dinhnghia")
     @Expose
     private String dinhnghia;
-    @SerializedName("Idgrammar")
+    @SerializedName("idgrammar")
     @Expose
     private String idgrammar;
-    @SerializedName("Vidu")
+    @SerializedName("vidu")
     @Expose
     private String vidu;
-    @SerializedName("Cautruc")
+    @SerializedName("cautruc")
     @Expose
     private String cautruc;
 

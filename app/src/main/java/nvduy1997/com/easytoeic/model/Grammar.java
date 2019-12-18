@@ -7,13 +7,13 @@ import java.io.Serializable;
 
 public class Grammar implements Serializable {
 
-@SerializedName("Id")
+@SerializedName("idGrammar")
 @Expose
 private String id;
-@SerializedName("Ten")
+@SerializedName("name")
 @Expose
 private String ten;
-@SerializedName("HinhAnh")
+@SerializedName("hinhanh")
 @Expose
 private String hinhAnh;
 
