@@ -108,7 +108,7 @@ public class VocabularyFragment extends Fragment {
                 ((Activity) getContext()).getWindowManager()
                         .getDefaultDisplay()
                         .getMetrics(displayMetrics);
-                int height = (int) (displayMetrics.heightPixels * 0.6f);
+                int height = (int) (displayMetrics.heightPixels * 0.7f);
                 int width = (int) (displayMetrics.widthPixels * 0.9f);
                 dialog.getWindow().setLayout(width, height);
 

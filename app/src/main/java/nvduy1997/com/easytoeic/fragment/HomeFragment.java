@@ -100,7 +100,7 @@ public class HomeFragment extends Fragment {
                 voa.openVOA();
             }
         });
-        lnGrammar = view.findViewById(R.id.linear_grammar_english);
+      /*  lnGrammar = view.findViewById(R.id.linear_grammar_english);
         lnGrammar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -113,7 +113,7 @@ public class HomeFragment extends Fragment {
             public void onClick(View v) {
                 openVocabulary.openVocabulary();
             }
-        });
+        });*/
         return view;
     }
 
